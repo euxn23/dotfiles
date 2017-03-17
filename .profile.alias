@@ -1,0 +1,25 @@
+# Application rename
+alias vim=nvim
+alias view='vim -R'
+alias vim8=/usr/local/bin/vim
+alias view8='vim8 -R'
+alias mx=tmux
+alias pj=cd-gitroot
+
+# Util command
+alias chrome='open -a Google\ Chrome'
+alias shl='exec $SHELL -l'
+alias zhl='exec zsh -l'
+alias vgrebuild='vagrant destroy -f && vagrant up'
+alias npx='PROXY="" HTTP_PROXY="" HTTPS_PROXY="" NO_PROXY=""'
+alias pg='ps aux | grep'
+alias pa='ps aux | tail -n +2| peco'
+alias pk="pa | awk '{print \$2}' | xargs kill -9"
+alias portps="(){ lsof -i :\$@ | awk 'NR!=1 {print \$2}' }"
+
+# Docker
+alias docker-rm="docker ps -a | tail -n +2 | peco | awk '{print \$1}' | xargs docker rm"
+alias docker-rmi="docker images | tail -n +2 | peco | awk '{print \$3}' | xargs docker rmi"
+alias docker-run="docker images | tail -n +2 | peco | awk '{print \$3}' | xargs docker run"
+alias docker-build="docker build -t `(pwd | xargs basename)`-image . --build-arg http_proxy=$PROXY --build-arg https_proxy=$PROXY"
+
