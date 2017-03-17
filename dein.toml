@@ -1,0 +1,38 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+let g:deoplete#enable_at_startup = 1
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+'''
+if = 'has("nvim")'
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+hook_add = 'let g:neocomplete#enable_at_startup = 1'
+if = 'has("lua")'
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+[[plugins]]
+repo = 'blueshirts/darcula'
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+[[plugins]]
+repo = 'scrooloose/syntastic'
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
+

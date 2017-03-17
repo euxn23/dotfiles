@@ -1,0 +1,13 @@
+*__.*
+.env*
+.DS_Store
+.idea
+npm-debug.*
+.vscode
+*.retry
+ansible.cfg
+ssh_config
+conf_dev.yml
+conf_stg.yml
+conf_prod.yml
+

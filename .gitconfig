@@ -1,0 +1,63 @@
+[include]
+  path = ~/.gitconfig.user
+[alias]
+  ach     = branch -a
+  adp     = add -p
+  amend   = commit --amend --no-edit
+  amende  = commit --amend
+  author  = "!git commit --amend --no-edit --author=\"$(git config user.name) <$(git config user.email)>\""
+  cc      = !git checkout-peco
+  ccb     = !git checkout-b-peco
+  cancel  = reset --soft HEAD^
+  chk     = checkout
+  cmm     = commit -m
+  dc      = diff --cached
+  dev     = !git checkout develop
+  develop = !git checkout develop
+  df      = diff
+  fh      = fetch
+  graph   = log --oneline --graph --decorate=full
+  mst     = master
+  mvb     = !git branch -m
+  master  = !git checkout master
+  mkbr    = !git checkout -b
+  pog     = log -p
+  psh     = push
+  pc      = !git push-peco
+  peco    = !git branch-peco
+  rb      = rebase
+  rbod    = !git fetch && git rebase origin/develop
+  rbom    = !git fetch && git rebase origin/master
+  rch     = branch -r
+  rmb     = !git branch -d
+  rmbf    = !git branch -D
+  rmbp    = !git branch-d-peco
+  sh      = stash
+  sl      = stash list
+  sp      = stash pop
+  ss      = status --short --branch
+  unstage = reset HEAD --
+
+  branch-peco     = !git branch -a | peco | sed -e 's/\\*//g'
+  checkout-peco   = !git branch-peco | sed -e 's|remotes/origin/||g' | xargs git checkout
+  checkout-b-peco = !git branch-peco | sed -e 's|remotes/origin/||g' | xargs git checkout -b
+  copy-peco       = !git branch-peco | xargs -I BRANCH git checkout BRANCH -- $1
+  push-peco       = !git branch-peco | xargs git push origin
+  branch-d-peco   = !git branch-peco | sed -e 's/\\*//g' | xargs git branch -D
+[core]
+	editor  = nvim
+  excludesfile  = ~/.gitignore
+[ghq]
+  root    = ~/src
+[color]
+	ui      = true
+[pager]
+	log     = diff-highlight | less
+	show    = diff-highlight | less
+	diff    = diff-highlight | less
+[diff]
+	compactionHeuristic = true
+[commit]
+	cleanup = strip
+[grep]
+	lineNumber = true
