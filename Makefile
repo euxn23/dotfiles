@@ -14,6 +14,7 @@ neovim:
 shell:
 	ln -sf $(.)/.profile $(.)/.profile.alias $(.)/.profile.post $(HOME)
 tmux:
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 	ln -sf $(.)/.tmux.conf $(HOME)
 vim:
 	ln -sf $(.)/.vimrc $(.)/dein.toml $(.)/dein_lazy.toml $(HOME)
