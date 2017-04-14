@@ -9,7 +9,7 @@ let g:python_host_prog = expand('~/.pyenv/versions/miniconda3-latest/envs/python
 let g:python3_host_prog = expand('~/.pyenv/versions/miniconda3-latest/envs/python3-latest/bin/python')
 
 if !isdirectory(s:dein_repo_dir)
-  execute '!git clone git@github.com:Shougo/dein.vim.git' s:dein_repo_dir
+  execute '!git clone https://github.com/Shougo/dein.vim.git' s:dein_repo_dir
 endif
 
 execute 'set runtimepath^=' . s:dein_repo_dir
