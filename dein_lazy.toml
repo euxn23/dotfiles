@@ -56,7 +56,10 @@ of_ft = 'ruby'
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
 on_ft = 'markdown'
-hook_add = 'let g:vim_markdown_fenced_languages = ["go", "js=javascript", "ts=typescript", "coffee", "py=python", "rb=ruby", "yaml", "toml"]'
+hook_add = '''
+let g:vim_markdown_fenced_languages = ["go", "js=javascript", "ts=typescript", "coffee", "py=python", "rb=ruby", "yaml", "toml"]
+let g:vim_markdown_folding_disabled=1
+'''
 [[plugins]]
 repo = 'ekalinin/Dockerfile.vim'
 on_ft = 'Dockerfile'
