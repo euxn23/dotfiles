@@ -8,8 +8,6 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-history-substring-search"
 
-zplug "sorin-ionescu/prezto"
-
 zplug "mollifier/cd-gitroot"
 zplug "stedolan/jq", \
   from:gh-r, \
