@@ -1,7 +1,7 @@
 export PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight
 
 NODE_VERSION=`cat $HOME/.nvm/alias/default`
-export PATH=$PATH:$HOME/.nvm/versions/node/$NODE_VERSION/bin
+export PATH=$PATH:$HOME/.nvm/versions/node/$NODE_VERSION/bin:./node_modules/.bin
 nvm() {
     unset -f nvm
     export NVM_DIR=~/.nvm
