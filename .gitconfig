@@ -1,6 +1,7 @@
 [include]
   path = ~/.gitconfig.user
 [alias]
+  a       = add .
   ach     = branch -a
   adp     = add -p
   amend   = commit --amend --no-edit
