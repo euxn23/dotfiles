@@ -9,7 +9,8 @@
 - zsh
 
 ## Usage
-Makefile provides commands to createsymbolic links.
+- `$ git clone https://github.com/yutaszk/dotfiles.git ~/.dotfiles`
+- Makefile provides commands to createsymbolic links.
 
 ### Single Activation
 - `$ make <tool>`
