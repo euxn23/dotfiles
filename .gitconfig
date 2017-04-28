@@ -1,5 +1,5 @@
 [include]
-  path = ~/.gitconfig.user
+  path = ~/.gitconfig.credential
 [alias]
   a       = add .
   ach     = branch -a
