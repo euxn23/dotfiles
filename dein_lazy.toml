@@ -65,7 +65,7 @@ repo = 'ekalinin/Dockerfile.vim'
 on_ft = 'Dockerfile'
 [[plugins]]
 repo = 'chase/vim-ansible-yaml'
-on_ft = 'yaml'
+on_ft = ['yaml', 'yml']
 [[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
