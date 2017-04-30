@@ -18,7 +18,7 @@ tmux:
 	ln -sf $(.)/.tmux.conf $(HOME)
 vim:
 	ln -sf $(.)/.vimrc $(.)/dein.toml $(.)/dein_lazy.toml $(HOME)
-zsh: zsh-precheck zprezto zplug
+zsh: zsh-precheck zprezto zplug shell
 zsh-precheck:
 	if ! type awk > /dev/null 2>&1 ; then \
     echo 'awk is required.' ; \
