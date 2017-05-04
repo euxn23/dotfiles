@@ -4,9 +4,9 @@ let g:vim_dir = has("nvim") ? expand('~/.config/nvim') : expand('~/.vim')
 let s:cache_home = vim_dir . '/.cache'
 let s:dein_dir = expand('~/.config/dein')
 let s:dein_repo_dir = expand('~/src/github.com/Shougo/dein.vim')
-let g:ruby_default_path = expand('~/.rbenv/versions/2.4.0/bin/ruby')
-let g:python_host_prog = expand('~/.pyenv/versions/miniconda3-latest/envs/python2-latest/bin/python')
-let g:python3_host_prog = expand('~/.pyenv/versions/miniconda3-latest/envs/python3-latest/bin/python')
+let g:ruby_default_path = systemlist('rbenv which ruby 2>/dev/null || which ruby')[0]
+let g:python_host_prog = systemlist('pyenv which python2 2>/dev/null || which python2')[0]
+let g:python3_host_prog = systemlist('pyenv which python3 2>/dev/null || which python3')[0]
 
 if !isdirectory(s:dein_repo_dir)
   execute '!git clone https://github.com/Shougo/dein.vim.git' s:dein_repo_dir
