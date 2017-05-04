@@ -84,6 +84,8 @@ nnoremap k gk
 nnoremap <down> gj
 nnoremap <up> gk
 
+set viminfo=
+
 set backspace=indent,eol,start
 " unlimited undo
 if has('persistent_undo')
