@@ -1,2 +1,4 @@
-eval "$(direnv hook $SHELL)"
+if (type direnv)&>/dev/null; then
+  eval "$(direnv hook $SHELL)"
+fi
 
