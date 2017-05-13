@@ -3,6 +3,8 @@ alias vim=nvim
 alias view='vim -R'
 alias vim8=/usr/local/bin/vim
 alias view8='vim8 -R'
+alias gpython='(type pyenv &>/dev/null && "$(pyenv root)/versions/$(pyenv global | grep python3)/bin/python") || python3'
+alias ipython='gpython -m IPython'
 alias mx='tmux -u'
 alias pj=cd-gitroot
 
