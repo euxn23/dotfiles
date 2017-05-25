@@ -52,6 +52,12 @@ hook_add = 'let g:jedi#force_py_version = 3'
 repo = 'vim-ruby/vim-ruby'
 of_ft = 'ruby'
 
+
+# html
+[[plugin]]
+repo = 'mattn/emmet-vim'
+of_ft = ['html', 'xml']
+
 # markup
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
