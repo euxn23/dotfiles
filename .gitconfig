@@ -49,6 +49,7 @@
 [core]
 	editor  = nvim
   excludesfile  = ~/.gitignore
+	fileMode = true
 [ghq]
   root    = ~/src
 [color]
