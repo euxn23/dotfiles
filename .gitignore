@@ -2,10 +2,5 @@
 .env*
 .DS_Store
 .idea
-npm-debug.*
 .vscode
-*.retry
-conf_dev.yml
-conf_stg.yml
-conf_prod.yml
-
+npm-debug.*
