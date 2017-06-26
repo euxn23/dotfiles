@@ -16,7 +16,7 @@
   dev     = !git checkout develop
   develop = !git checkout develop
   df      = diff
-  fh      = fetch
+  fp      = fetch -p
   graph   = log --oneline --graph --decorate=full
   mst     = master
   mvb     = !git branch -m
