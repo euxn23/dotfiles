@@ -11,7 +11,8 @@ nvm() {
 
 export PYENV_ROOT=~/.pyenv
 export PATH=$PYENV_ROOT/bin:$PATH
-eval "$(pyenv init - --no-rehash)"
+export PATH=`echo -n "$(pyenv root)/versions/$(pyenv global | grep python2)/bin"`:$PATH
+export PATH=`echo -n "$(pyenv root)/versions/$(pyenv global | grep python3)/bin"`:$PATH
 
 export RBENV_ROOT=~/.rbenv
 export PATH=$RBENV_ROOT/bin:$PATH
