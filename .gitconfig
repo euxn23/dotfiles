@@ -12,6 +12,7 @@
   cancel  = reset --soft HEAD^
   chk     = checkout
   cmm     = commit -m
+  cmminit = commit -m 'Initial Commit' --allow-empty
   dc      = diff --cached
   dev     = !git checkout develop
   develop = !git checkout develop
