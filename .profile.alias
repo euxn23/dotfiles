@@ -8,7 +8,6 @@ alias pj=cd-gitroot
 alias chrome='open -a Google\ Chrome'
 alias shl='exec $SHELL -l'
 alias zhl='exec zsh -l'
-alias vgrebuild='vagrant destroy -f && vagrant up'
 alias pg='ps aux | grep'
 alias pa='ps aux | tail -n +2| peco'
 alias pk="pa | awk '{print \$2}' | xargs kill -9"
