@@ -25,6 +25,12 @@ if [[ -e "$HOME/.rbenv" ]]; then
   export RUBYGEMS_GEMDEPS=-
 fi
 
+if [[ -e "$HOME/.phpenv" ]]; then
+  export PHPENV_ROOT=~/.phpenv
+  export PATH=$PHPENV_ROOT/bin:$PATH
+  eval "$(phpenv init - --no-rehash)"
+fi
+
 if [[ -e "$HOME/.gvm" ]]; then
   source ~/.gvm/scripts/gvm
   export GOPATH=$HOME
