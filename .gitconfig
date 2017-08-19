@@ -29,6 +29,7 @@
   peco    = !git branch-peco
   pull-f  = !git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
   rb      = rebase
+  rbc     = rebase --continue
   rbod    = !git fetch && git rebase origin/develop
   rbom    = !git fetch && git rebase origin/master
   rch     = branch -r
