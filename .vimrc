@@ -32,8 +32,8 @@ filetype plugin indent on
 set clipboard+=unnamedplus
 
 " highlight
-syntax enable
 colorscheme darcula
+syntax enable
 set showmatch
 set matchtime=3
 set cursorline
