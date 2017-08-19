@@ -1,28 +1,36 @@
 export PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight
 
-NODE_VERSION=`cat $HOME/.nvm/alias/default`
-export PATH=$PATH:$HOME/.nvm/versions/node/$NODE_VERSION/bin:./node_modules/.bin
-nvm() {
+if [[ -e "$HOME/.nvm" ]]; then
+  NODE_VERSION=`cat $HOME/.nvm/alias/default`
+  export PATH=$PATH:$HOME/.nvm/versions/node/$NODE_VERSION/bin:./node_modules/.bin
+  nvm() {
     unset -f nvm
     export NVM_DIR=~/.nvm
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
     nvm "$@"
-}
+  }
+fi
 
-export PYENV_ROOT=~/.pyenv
-export PATH=$PYENV_ROOT/bin:$PATH
-export PATH=`echo -n "$(pyenv root)/versions/$(pyenv global | grep python2)/bin"`:$PATH
-export PATH=`echo -n "$(pyenv root)/versions/$(pyenv global | grep python3)/bin"`:$PATH
+if [[ -e "$HOME/.pyenv" ]]; then
+  export PYENV_ROOT=~/.pyenv
+  export PATH=$PYENV_ROOT/bin:$PATH
+  export PATH=`echo -n "$(pyenv root)/versions/$(pyenv global | grep python2)/bin"`:$PATH
+  export PATH=`echo -n "$(pyenv root)/versions/$(pyenv global | grep python3)/bin"`:$PATH
+fi
 
-export RBENV_ROOT=~/.rbenv
-export PATH=$RBENV_ROOT/bin:$PATH
-eval "$(rbenv init - --no-rehash)"
-export RUBYGEMS_GEMDEPS=-
+if [[ -e "$HOME/.rbenv" ]]; then
+  export RBENV_ROOT=~/.rbenv
+  export PATH=$RBENV_ROOT/bin:$PATH
+  eval "$(rbenv init - --no-rehash)"
+  export RUBYGEMS_GEMDEPS=-
+fi
 
-source ~/.gvm/scripts/gvm
-export GOPATH=$HOME
-export PATH=$PATH:$HOME/bin
-export GHQ=$HOME/src
+if [[ -e "$HOME/.gvm" ]]; then
+  source ~/.gvm/scripts/gvm
+  export GOPATH=$HOME
+  export PATH=$PATH:$HOME/bin
+  export GHQ=$HOME/src
+fi
 
 if [[ -e "$HOME/.profile.alias" ]]; then
   source $HOME/.profile.alias
