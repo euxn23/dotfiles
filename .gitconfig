@@ -49,7 +49,6 @@
   push-peco       = !git branch-peco | xargs git push origin
   branch-d-peco   = !git branch-peco | sed -e 's/\\*//g' | xargs git branch -D
 [core]
-	editor  = nvim
   excludesfile  = ~/.gitignore
 	fileMode = true
 [ghq]
