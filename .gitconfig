@@ -46,6 +46,7 @@
   sp      = stash pop
   ss      = status --short --branch
   unstage = reset HEAD --
+  wmm     = weed -m
 
   branch-peco     = !git branch -a | peco | sed -e 's/\\*//g'
   checkout-peco   = !git branch-peco | sed -e 's|remotes/origin/||g' | xargs git checkout
