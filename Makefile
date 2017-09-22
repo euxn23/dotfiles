@@ -2,7 +2,9 @@
 
 . := $(HOME)/.dotfiles
 
-all: zsh-precheck editorconfig git neovim tmux vim zsh
+all: zsh-precheck dotfiles editorconfig git neovim tmux vim zsh
+dotfiles:
+	ln -sf $(PWD) $(HOME)/.dotfiles
 editorconfig:
 	ln -sf $(.)/.editorconfig $(HOME)
 git:
