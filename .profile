@@ -22,7 +22,6 @@ if [[ -e "$HOME/.rbenv" ]]; then
   export RBENV_ROOT=~/.rbenv
   export PATH=$RBENV_ROOT/bin:$PATH
   eval "$(rbenv init - --no-rehash)"
-  export RUBYGEMS_GEMDEPS=-
 fi
 
 if [[ -e "$HOME/.phpenv" ]]; then
