@@ -16,7 +16,7 @@ neovim:
 shell:
 	ln -sf $(.)/.profile $(.)/.profile.alias $(.)/.profile.post $(HOME)
 tmux:
-	git clone https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm
+	git -C $(HOME)/.tmux/plugins/tpm pull || git clone https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm
 	ln -sf $(.)/.tmux.conf $(HOME)
 vim:
 	ln -sf $(.)/.vimrc $(.)/dein.toml $(.)/dein_lazy.toml $(HOME)
@@ -35,11 +35,9 @@ zsh-precheck:
     exit 0 ; \
   fi
 zplug:
-	rm -rf $(HOME)/.zplug
-	git clone https://github.com/zplug/zplug $(HOME)/.zplug
+	git -C $(HOME)/.zplug pull || git clone https://github.com/zplug/zplug $(HOME)/.zplug
 zprezto:
-	rm -rf $(HOME)/.zprezto
-	git clone --recursive https://github.com/sorin-ionescu/prezto.git $(HOME)/.zprezto
+	git -C $(HOME)/.zprezto pull || git clone --recursive https://github.com/sorin-ionescu/prezto.git $(HOME)/.zprezto
 	ln -sf $(.)/.profile $(HOME)/.zprofile
 	ln -sf $(.)/.zprezto/zlogin $(HOME)/.zlogin
 	ln -sf $(.)/.zprezto/zlogout $(HOME)/.zlogout
