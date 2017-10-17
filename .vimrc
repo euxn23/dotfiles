@@ -78,6 +78,11 @@ nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>
 " cursor
 set whichwrap=b,s,h,l,<,>,[,],~
 set number
+set mouse=a
+if !has("nvim")
+  set ttymouse=xterm2
+  set clipboard+=unnamed
+endif
 
 nnoremap j gj
 nnoremap k gk
