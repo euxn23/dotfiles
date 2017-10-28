@@ -11,7 +11,6 @@ alias zhl='exec zsh -l'
 alias pg='ps aux | grep'
 alias pa='ps aux | tail -n +2| peco'
 alias pk="pa | awk '{print \$2}' | xargs kill -9"
-alias portps="(){ lsof -i :\$@ | awk 'NR!=1 {print \$2}' }"
 
 # Docker
 alias docker-rm="docker ps -a | tail -n +2 | peco | awk '{print \$1}' | xargs docker rm"
