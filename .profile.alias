@@ -2,6 +2,7 @@
 alias gpython='(type pyenv &>/dev/null && "$(pyenv root)/versions/$(pyenv global | grep python3)/bin/python") || python3'
 alias ipython='gpython -m IPython'
 alias mx='tmux -u'
+alias fzx='fzf-tmux'
 alias pj=cd-gitroot
 
 # Util command
@@ -9,12 +10,12 @@ alias chrome='open -a Google\ Chrome'
 alias shl='exec $SHELL -l'
 alias zhl='exec zsh -l'
 alias pg='ps aux | grep'
-alias pa='ps aux | tail -n +2| peco'
+alias pa='ps aux | tail -n +2| fzf'
 alias pk="pa | awk '{print \$2}' | xargs kill -9"
 
 # Docker
-alias docker-rm="docker ps -a | tail -n +2 | peco | awk '{print \$1}' | xargs docker rm"
-alias docker-rmi="docker images | tail -n +2 | peco | awk '{print \$3}' | xargs docker rmi"
-alias docker-run="docker images | tail -n +2 | peco | awk '{print \$3}' | xargs docker run"
+alias docker-rm="docker ps -a | tail -n +2 | fzf | awk '{print \$1}' | xargs docker rm"
+alias docker-rmi="docker images | tail -n +2 | fzf | awk '{print \$3}' | xargs docker rmi"
+alias docker-run="docker images | tail -n +2 | fzf | awk '{print \$3}' | xargs docker run"
 alias docker-build="docker build -t `(pwd | xargs basename)`-image . --build-arg http_proxy=$PROXY --build-arg https_proxy=$PROXY"
 

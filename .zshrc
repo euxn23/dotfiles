@@ -39,34 +39,30 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-function peco-select-historyfn() {
-    local tac
-    if which tac > /dev/null; then
-        tac="tac"
-    else
-        tac="tail -r"
-    fi
-    BUFFER=$(\history -n 1 | \
-        eval $tac | \
-        peco --query "$LBUFFER")
+# Source fzf
+source "/Users/yuta/src/github.com/junegunn/fzf/shell/completion.zsh" 2> /dev/null
+source "/Users/yuta/src/github.com/junegunn/fzf/shell/key-bindings.zsh"
+
+function fzf-select-historyfn() {
+    BUFFER=$(history -n 1 | fzf --tac --query "$LBUFFER")
     CURSOR=$#BUFFER
     zle clear-screen
 }
 
-zle -N peco-select-historyfn
-bindkey '^r' peco-select-historyfn
+zle -N fzf-select-historyfn
+bindkey '^r' fzf-select-historyfn
 
-function repofn () {
-  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+function repofd () {
+  local selected_dir=$(ghq list -p | fzf --query "$LBUFFER")
   if [ -n "$selected_dir" ]; then
     BUFFER="cd ${selected_dir}"
     zle accept-line
   fi
   zle clear-screen
 }
-zle -N repofn
-bindkey '^]' repofn
-alias repo='cd $(ghq list -p | peco)'
+zle -N repofd
+bindkey '^]' repofd
+alias repo='cd $(ghq list -p | fzf)'
 
 if [[ -e "$HOME/.profile.post" ]]; then
   source $HOME/.profile.post
