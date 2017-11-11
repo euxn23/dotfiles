@@ -7,8 +7,8 @@
   amend   = commit --amend --no-edit
   amende  = commit --amend
   author  = "!git commit --amend --no-edit --author=\"$(git config user.name) <$(git config user.email)>\""
-  cc      = !git checkout-peco
-  ccb     = !git checkout-b-peco
+  cc      = !git checkout-fzf
+  ccb     = !git checkout-b-fzf
   cancel  = reset --soft HEAD^
   chk     = checkout
   cmm     = commit -m
@@ -28,8 +28,8 @@
   pof     = push origin -f
   pod     = push origin develop
   pom     = push origin master
-  pc      = !git push-peco
-  peco    = !git branch-peco
+  pz      = !git push-fzf
+  fzf     = !git branch-fzf
   pull-f  = !git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
   r       = rebase
   ra      = rebase --abort
@@ -40,7 +40,7 @@
   rch     = branch -r
   rmb     = !git branch -d
   rmbf    = !git branch -D
-  rmbp    = !git branch-d-peco
+  rmbz    = !git branch-d-fzf
   sh      = stash
   sl      = stash list
   sp      = stash pop
@@ -48,12 +48,12 @@
   unstage = reset HEAD --
   wmm     = weed -m
 
-  branch-peco     = !git branch -a | peco | sed -e 's/\\*//g'
-  checkout-peco   = !git branch-peco | sed -e 's|remotes/origin/||g' | xargs git checkout
-  checkout-b-peco = !git branch-peco | sed -e 's|remotes/origin/||g' | xargs git checkout -b
-  copy-peco       = !git branch-peco | xargs -I BRANCH git checkout BRANCH -- $1
-  push-peco       = !git branch-peco | xargs git push origin
-  branch-d-peco   = !git branch-peco | sed -e 's/\\*//g' | xargs git branch -D
+  branch-fzf     = !git branch -a | fzf | sed -e 's/\\*//g'
+  checkout-fzf   = !git branch-fzf | sed -e 's|remotes/origin/||g' | xargs git checkout
+  checkout-b-fzf = !git branch-fzf | sed -e 's|remotes/origin/||g' | xargs git checkout -b
+  copy-fzf       = !git branch-fzf | xargs -I BRANCH git checkout BRANCH -- $1
+  push-fzf       = !git branch-fzf | xargs git push origin
+  branch-d-fzf   = !git branch-fzf | sed -e 's/\\*//g' | xargs git branch -D
 [core]
   excludesfile  = ~/.gitignore
 	fileMode = true
