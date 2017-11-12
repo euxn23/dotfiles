@@ -40,8 +40,8 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Source fzf
-source "/Users/yuta/src/github.com/junegunn/fzf/shell/completion.zsh" 2> /dev/null
-source "/Users/yuta/src/github.com/junegunn/fzf/shell/key-bindings.zsh"
+source "$HOME/src/github.com/junegunn/fzf/shell/completion.zsh" 2> /dev/null
+source "$HOME/src/github.com/junegunn/fzf/shell/key-bindings.zsh"
 
 function fzf-select-historyfn() {
     BUFFER=$(history -n 1 | fzf --tac --query "$LBUFFER")
