@@ -5,7 +5,7 @@
 - neovim
 - bash
 - tmux 2.2+
-- vim 7.3+
+- vim 7.4+
 - zsh 4.3.11+
 
 ## Usage
