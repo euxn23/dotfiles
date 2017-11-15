@@ -29,7 +29,6 @@ if dein#check_install()
 endif
 
 filetype plugin indent on
-set clipboard+=unnamedplus
 
 " highlight
 syntax enable
@@ -81,6 +80,8 @@ set mouse=a
 if !has("nvim")
   set ttymouse=xterm2
   set clipboard+=unnamed
+else
+  set clipboard+=unnamedplus
 endif
 
 nnoremap j gj
