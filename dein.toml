@@ -20,6 +20,7 @@ repo = 'Shougo/neosnippet-snippets'
 repo = 'editorconfig/editorconfig-vim'
 [[plugins]]
 repo = 'blueshirts/darcula'
+hook_add = 'colorscheme darcula'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 
