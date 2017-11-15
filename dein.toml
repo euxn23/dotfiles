@@ -9,11 +9,11 @@ hook_add = '''
 let g:deoplete#enable_at_startup = 1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 '''
-if = 'has("nvim")'
+if = 'has("nvim") || v:version >= 800'
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
 hook_add = 'let g:neocomplete#enable_at_startup = 1'
-if = 'has("lua")'
+if = 'has("lua") && v:version <= 740'
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 [[plugins]]
