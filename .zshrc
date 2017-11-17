@@ -34,38 +34,36 @@ setopt hist_ignore_all_dups
 
 export TERM='screen-256color'
 
-# Source Prezto.
+# Source Prezto
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
 # Source fzf
-source "$HOME/src/github.com/junegunn/fzf/shell/completion.zsh" 2> /dev/null
-source "$HOME/src/github.com/junegunn/fzf/shell/key-bindings.zsh"
+if type fzf &>/dev/null; then
+  source $HOME/src/github.com/junegunn/fzf/shell/completion.zsh
+  source $HOME/src/github.com/junegunn/fzf/shell/key-bindings.zsh
 
-function fzf-select-historyfn() {
-    BUFFER=$(history -n 1 | fzf --tac --query "$LBUFFER")
-    CURSOR=$#BUFFER
+  function fzf-select-historyfn() {
+      BUFFER=$(history -n 1 | fzf --tac --query "$LBUFFER")
+      CURSOR=$#BUFFER
+      zle clear-screen
+  }
+
+  zle -N fzf-select-historyfn
+  bindkey '^r' fzf-select-historyfn
+
+  function repofd () {
+    local selected_dir=$(ghq list -p | fzf --query "$LBUFFER")
+    if [ -n "$selected_dir" ]; then
+      BUFFER="cd ${selected_dir}"
+      zle accept-line
+    fi
     zle clear-screen
-}
-
-zle -N fzf-select-historyfn
-bindkey '^r' fzf-select-historyfn
-
-function repofd () {
-  local selected_dir=$(ghq list -p | fzf --query "$LBUFFER")
-  if [ -n "$selected_dir" ]; then
-    BUFFER="cd ${selected_dir}"
-    zle accept-line
-  fi
-  zle clear-screen
-}
-zle -N repofd
-bindkey '^]' repofd
-alias repo='cd $(ghq list -p | fzf)'
-
-if [[ -e "$HOME/.profile.post" ]]; then
-  source $HOME/.profile.post
+  }
+  zle -N repofd
+  bindkey '^]' repofd
+  alias repo='cd $(ghq list -p | fzf)'
 fi
 
 source $HOME/.bashrc.extra &>/dev/null
