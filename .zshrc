@@ -1,5 +1,5 @@
 autoload -Uz compinit
-export SHELL=/bin/zsh
+export SHELL="$(which zsh)"
 
 # zplug
 source $HOME/.zplug/init.zsh
