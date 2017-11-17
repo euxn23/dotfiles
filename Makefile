@@ -22,15 +22,15 @@ vim:
 	ln -sf $(.)/.vimrc $(.)/dein.toml $(.)/dein_lazy.toml $(HOME)
 zsh: zsh-precheck zprezto zplug shell
 zsh-precheck:
-	if ! type awk > /dev/null 2>&1 ; then \
+	if ! type awk &>/dev/null ; then \
     echo 'awk is required.' ; \
     exit 0 ; \
   fi && \
-	if ! type git > /dev/null 2>&1 ; then \
+	if ! type git &>/dev/null ; then \
     echo 'git is required.' ; \
     exit 0 ; \
   fi && \
-	if ! type zsh > /dev/null 2>&1 ; then \
+	if ! type zsh &>/dev/null ; then \
     echo 'zsh is required.' ; \
     exit 0 ; \
   fi
