@@ -23,8 +23,6 @@ HISTFILE=~/.zhistory
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-export PYENV_VIRTUALENV_DISABLE_PROMPT=2
-
 export LSCOLORS=ExfxcxdxbxGxDxabagacad
 zstyle ':completion:*' list-colors ${LSCOLORS}
 zstyle ':completion:*:default' menu select=2
