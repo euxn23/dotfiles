@@ -68,3 +68,4 @@ if [[ -e "$HOME/.profile.post" ]]; then
   source $HOME/.profile.post
 fi
 
+source $HOME/.bashrc.extra &>/dev/null
