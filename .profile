@@ -1,4 +1,7 @@
 export PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight
+export PATH=$PATH:$HOME/src/github.com/junegunn/fzf/bin
+export GHQ=$HOME/src
+export FZF_DEFAULT_OPTS="--color=bg+:12 --exit-0 --inline-info --multi --reverse --select-1"
 
 if [[ -e "$HOME/.nvm" ]]; then
   NODE_VERSION=`cat $HOME/.nvm/alias/default`
@@ -34,9 +37,5 @@ if [[ -e "$HOME/.gvm" ]]; then
   source ~/.gvm/scripts/gvm
   export GOPATH=$HOME
   export PATH=$PATH:$HOME/bin
-  export GHQ=$HOME/src
 fi
-
-export PATH="$PATH:$GOPATH/src/github.com/junegunn/fzf/bin"
-export FZF_DEFAULT_OPTS="--color=bg+:12 --exit-0 --inline-info --multi --reverse --select-1"
 
