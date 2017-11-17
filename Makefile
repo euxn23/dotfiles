@@ -4,7 +4,7 @@
 
 all: zsh-precheck dotfiles editorconfig git neovim tmux vim zsh
 dotfiles:
-	ln -sf $(.) $(HOME)/.dotfiles
+	[ -e $(HOME)/.dotfiles ] || ln -sf $(.) $(HOME)/.dotfiles
 editorconfig:
 	ln -sf $(.)/.editorconfig $(HOME)
 git:
