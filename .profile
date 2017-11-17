@@ -40,10 +40,3 @@ fi
 export PATH="$PATH:$GOPATH/src/github.com/junegunn/fzf/bin"
 export FZF_DEFAULT_OPTS="--color=bg+:12 --exit-0 --inline-info --multi --reverse --select-1"
 
-if [[ -e "$HOME/.profile.alias" ]]; then
-  source $HOME/.profile.alias
-fi
-if [[ -e "$HOME/.profile.env" ]]; then
-  source $HOME/.profile.env
-fi
-
