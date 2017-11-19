@@ -17,8 +17,7 @@ fi
 if [[ -e "$HOME/.pyenv" ]]; then
   export PYENV_ROOT=~/.pyenv
   export PATH=$PYENV_ROOT/bin:$PATH
-  export PATH=`echo -n "$(pyenv root)/versions/$(pyenv global | grep python2)/bin"`:$PATH
-  export PATH=`echo -n "$(pyenv root)/versions/$(pyenv global | grep python3)/bin"`:$PATH
+  export PATH="$PYENV_ROOT/versions/$(cat "$PYENV_ROOT/version" | head -n 1)/bin":$PATH
 fi
 
 if [[ -e "$HOME/.rbenv" ]]; then
