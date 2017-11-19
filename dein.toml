@@ -25,6 +25,20 @@ hook_add = 'colorscheme darcula'
 repo = 'itchyny/lightline.vim'
 
 [[plugins]]
+repo = 'w0rp/ale'
+hook_add = '''
+let g:ale_fixers = {
+\   'go': ['goimports'],
+\   'javascript': ['prettier'],
+\   'typescript': ['prettier'],
+\   'json': ['prettier'],
+\   'python': ['flake8', 'mypy'],
+\   'ruby': ['rubocop', 'rails_best_practice'],
+\   'vim': ['vint']
+\}
+let g:ale_completion_enabled = 1
+'''
+[[plugins]]
 repo = 'thinca/vim-quickrun'
 [[plugins]]
 repo = 'tpope/vim-fugitive'
@@ -32,8 +46,6 @@ repo = 'tpope/vim-fugitive'
 repo = 'airblade/vim-gitgutter'
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
-[[plugins]]
-repo = 'scrooloose/syntastic'
 [[plugins]]
 repo = 'ctrlpvim/ctrlp.vim'
 hook_add = '''
