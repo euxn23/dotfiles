@@ -104,33 +104,3 @@ if has("autocmd")
   \ endif
 endif
 
-
-
-""""""""""""
-" plugins
-""""""""""""
-
-" syntastic
-let g:syntastic_enable_signs = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_javascript_checkers=['eslint']
-let g:syntastic_python_checkers=['flake8']
-let g:syntastic_ruby_checkers=['rubocop']
-
-" ctrlp
-let g:ctrlp_match_window = 'order:ttb,min:20,max:20,results:100'
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_types = ['fil']
-let g:ctrlp_extensions = ['funky', 'commandline']
-command! CtrlPCommandLine call ctrlp#init(ctrlp#commandline#id())
-let g:ctrlp_funky_matchtype = 'path'
-
-if executable('ag')
-  let g:ctrlp_use_caching=0
-  let g:ctrlp_user_command='ag %s -i --hidden -g ""'
-endif
-
