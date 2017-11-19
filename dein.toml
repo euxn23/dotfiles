@@ -61,4 +61,10 @@ if executable('ag')
   let g:ctrlp_user_command='ag %s -i --hidden -g ""'
 endif
 '''
+[[plugins]]
+repo = 'scrooloose/nerdcommenter'
+hook_add = '''
+map <C-_> <Leader>c<space>
+let g:NERDSpaceDelims = 1
+'''
 
