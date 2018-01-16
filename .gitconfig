@@ -26,6 +26,7 @@
   pog     = log -p
   po      = push origin
   pof     = push origin -f
+  poc     = !git push origin $(git symbolic-ref --short HEAD)
   pod     = push origin develop
   pom     = push origin master
   pz      = !git push-fzf
