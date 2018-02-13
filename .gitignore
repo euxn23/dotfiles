@@ -2,5 +2,6 @@
 .env*
 .DS_Store
 .idea
+*.iml
 .vscode
 npm-debug.*
