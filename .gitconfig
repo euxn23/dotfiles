@@ -7,12 +7,10 @@
   amend   = commit --amend --no-edit
   amende  = commit --amend
   author  = "!git commit --amend --no-edit --author=\"$(git config user.name) <$(git config user.email)>\""
-  cc      = !git checkout-fzf
-  ccb     = !git checkout-b-fzf
   bd      = !git branch -d
   bdd     = !git branch --merged | grep -v '*' | xargs -I{} git branch -d {}
   bdf     = !git branch -D
-  bdz     = !git branch-d-fzf
+  bdi     = !git branch-d-i
   cancel  = reset --soft HEAD^
   chk     = checkout
   cmm     = commit -m
@@ -33,8 +31,8 @@
   poc     = !git push origin $(git symbolic-ref --short HEAD)
   pod     = push origin develop
   pom     = push origin master
-  pz      = !git push-fzf
-  fzf     = !git branch-fzf
+  pi      = !git push-i
+  i       = !git branch-i
   pull-f  = !git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
   r       = rebase
   ra      = rebase --abort
@@ -50,12 +48,12 @@
   unstage = reset HEAD --
   wmm     = weed -m
 
-  branch-fzf     = !git branch -a | fzf | sed -e 's/\\*//g'
-  checkout-fzf   = !git branch-fzf | sed -e 's|remotes/origin/||g' | xargs git checkout
-  checkout-b-fzf = !git branch-fzf | sed -e 's|remotes/origin/||g' | xargs git checkout -b
-  copy-fzf       = !git branch-fzf | xargs -I BRANCH git checkout BRANCH -- $1
-  push-fzf       = !git branch-fzf | xargs git push origin
-  branch-d-fzf   = !git branch-fzf | sed -e 's/\\*//g' | xargs git branch -D
+  branch-i     = !git branch -a | fzf | sed -e 's/\\*//g'
+  checkout-i   = !git branch-i | sed -e 's|remotes/origin/||g' | xargs git checkout
+  checkout-b-i = !git branch-i | sed -e 's|remotes/origin/||g' | xargs git checkout -b
+  copy-i       = !git branch-i | xargs -I BRANCH git checkout BRANCH -- $1
+  push-i       = !git branch-i | xargs git push origin
+  branch-d-i   = !git branch-i | sed -e 's/\\*//g' | xargs git branch -D
 [core]
   excludesfile  = ~/.gitignore
 	fileMode = true
