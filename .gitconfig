@@ -9,7 +9,10 @@
   author  = "!git commit --amend --no-edit --author=\"$(git config user.name) <$(git config user.email)>\""
   cc      = !git checkout-fzf
   ccb     = !git checkout-b-fzf
+  bd      = !git branch -d
   bdd     = !git branch --merged | grep -v '*' | xargs -I{} git branch -d {}
+  bdf     = !git branch -D
+  bdz     = !git branch-d-fzf
   cancel  = reset --soft HEAD^
   chk     = checkout
   cmm     = commit -m
@@ -40,9 +43,6 @@
   rod     = !git fetch && git rebase origin/develop
   rom     = !git fetch && git rebase origin/master
   rch     = branch -r
-  rmb     = !git branch -d
-  rmbf    = !git branch -D
-  rmbz    = !git branch-d-fzf
   sh      = stash
   sl      = stash list
   sp      = stash pop
