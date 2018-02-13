@@ -11,20 +11,23 @@
   bdd     = !git branch --merged | grep -v '*' | xargs -I{} git branch -d {}
   bdf     = !git branch -D
   bdi     = !git branch-d-i
+  c       = checkout
+  cb      = !git checkout -b
+  cc      = !git checkout-i
+  ccb     = !git checkout-b-i
   cancel  = reset --soft HEAD^
-  chk     = checkout
   cmm     = commit -m
   cmminit = commit -m 'Initial Commit' --allow-empty
+  d       = !git checkout develop
   dc      = diff --cached
   dev     = !git checkout develop
   develop = !git checkout develop
   df      = diff
   fp      = fetch -p
   graph   = log --oneline --graph --decorate=full
-  mst     = master
+  m       = !git checkout master
   mvb     = !git branch -m
   master  = !git checkout master
-  mkbr    = !git checkout -b
   pog     = log -p
   po      = push origin
   pof     = push origin -f
