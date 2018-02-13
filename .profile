@@ -4,14 +4,8 @@ export GHQ=$HOME/src
 export FZF_DEFAULT_OPTS="--color=bg+:12 --exit-0 --inline-info --multi --reverse --select-1"
 
 if [[ -e "$HOME/.nvm" ]]; then
-  NODE_VERSION=`cat $HOME/.nvm/alias/default`
-  export PATH=$PATH:$HOME/.nvm/versions/node/$NODE_VERSION/bin:./node_modules/.bin
-  nvm() {
-    unset -f nvm
-    export NVM_DIR=~/.nvm
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-    nvm "$@"
-  }
+  export NVM_DIR=~/.nvm
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" --no-use
 fi
 
 if [[ -e "$HOME/.pyenv" ]]; then
