@@ -44,6 +44,7 @@
   rod     = !git fetch && git rebase origin/develop
   rom     = !git fetch && git rebase origin/master
   rch     = branch -r
+  sd      = stash drop
   sh      = stash
   sl      = stash list
   sp      = stash pop
