@@ -9,6 +9,7 @@
   author  = "!git commit --amend --no-edit --author=\"$(git config user.name) <$(git config user.email)>\""
   cc      = !git checkout-fzf
   ccb     = !git checkout-b-fzf
+  bdd     = !git branch --merged | grep -v '*' | xargs -I{} git branch -d {}
   cancel  = reset --soft HEAD^
   chk     = checkout
   cmm     = commit -m
