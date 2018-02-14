@@ -36,7 +36,7 @@
   pom     = push origin master
   pi      = !git push-i
   i       = !git branch-i
-  pull-f  = !git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
+  pull-f  = !git fetch && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
   r       = rebase
   ra      = rebase --abort
   rc      = rebase --continue
