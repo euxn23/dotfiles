@@ -53,12 +53,12 @@
   wmm     = weed -m
 
   branch-i     = !git branch -a | fzf | sed -e 's/\\*//g'
-  checkout-i   = !git branch-i | sed -e 's|remotes/origin/||g' | xargs git checkout
-  checkout-b-i = !git branch-i | sed -e 's|remotes/origin/||g' | xargs git checkout -b
-  copy-i       = !git branch-i | xargs -I BRANCH git checkout BRANCH -- $1
-  push-i       = !git branch-i | xargs git push origin
-  branch-d-i   = !git branch-i | sed -e 's/\\*//g' | xargs git branch -D
-  rebase-i     = !git log --oneline | fzf | awk '{ print $1 }' | xargs -I{} git rebase -i {}^
+  checkout-i   = !git checkout $(git branch-i | sed -e 's|remotes/origin/||g')
+  checkout-b-i = !git checkout -b $(git branch-i | sed -e 's|remotes/origin/||g')
+  copy-i       = !git git checkout $(git branch-i) -- $1
+  push-i       = !git push origin $(git branch-i)
+  branch-d-i   = !git branch -D $(git branch-i | sed -e 's/\\*//g')
+  rebase-i     = !git rebase -i $(git log --oneline | fzf | awk '{ print $1 }')^
 [core]
   excludesfile  = ~/.gitignore
 	fileMode = true
