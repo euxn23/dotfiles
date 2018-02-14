@@ -40,7 +40,7 @@
   r       = rebase
   ra      = rebase --abort
   rc      = rebase --continue
-  ri      = rebase -i
+  ri      = !git rebase-i
   rod     = !git fetch && git rebase origin/develop
   rom     = !git fetch && git rebase origin/master
   rch     = branch -r
@@ -58,6 +58,7 @@
   copy-i       = !git branch-i | xargs -I BRANCH git checkout BRANCH -- $1
   push-i       = !git branch-i | xargs git push origin
   branch-d-i   = !git branch-i | sed -e 's/\\*//g' | xargs git branch -D
+  rebase-i     = !git log --oneline | fzf | awk '{ print $1 }' | xargs -I{} git rebase -i {}^
 [core]
   excludesfile  = ~/.gitignore
 	fileMode = true
