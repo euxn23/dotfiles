@@ -18,6 +18,7 @@
   cancel  = reset --soft HEAD^
   cmm     = commit -m
   cmminit = commit -m 'Initial Commit' --allow-empty
+  current = !git rev-parse --abbrev-ref HEAD
   d       = !git checkout develop
   dc      = diff --cached
   dev     = !git checkout develop
@@ -36,7 +37,7 @@
   pom     = push origin master
   pi      = !git push-i
   i       = !git branch-i
-  pull-f  = !git fetch && git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
+  pull-f  = !git fetch && git reset --hard origin/$(git current)
   r       = rebase
   ra      = rebase --abort
   rc      = rebase --continue
