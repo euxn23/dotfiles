@@ -33,8 +33,9 @@
   master  = !git checkout master
   pog     = log -p
   po      = push origin
-  pof     = push origin -f
   poc     = !git push origin $(git symbolic-ref --short HEAD)
+  pocf    = !git poc -f
+  pof     = push origin -f
   pod     = push origin develop
   pom     = push origin master
   pi      = !git push-i
