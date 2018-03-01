@@ -6,6 +6,7 @@ export FZF_DEFAULT_OPTS="--color=bg+:12 --exit-0 --inline-info --multi --reverse
 if [[ -e "$HOME/.nvm" ]]; then
   export NVM_DIR=~/.nvm
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" --no-use
+  export PATH=$NVM_DIR/versions/node/$(cat $NVM_DIR/alias/default)/bin:$PATH
 fi
 
 if [[ -e "$HOME/.pyenv" ]]; then
