@@ -16,6 +16,8 @@
   cc      = !git checkout-i
   ccb     = !git checkout-b-i
   cancel  = reset --soft HEAD^
+  cmfy    = !git current | perl -pe 's/_/ /g' | perl -pe 's|fix/||g' | perl -pe 's|feature/||g' | perl -nle 'print ucfirst'
+  cmfx    = "!git commit -m \"$(git cmfy)\""
   cmm     = commit -m
   cmminit = commit -m 'Initial Commit' --allow-empty
   current = !git rev-parse --abbrev-ref HEAD
