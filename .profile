@@ -18,7 +18,8 @@ fi
 if [[ -e "$HOME/.rbenv" ]]; then
   export RBENV_ROOT=~/.rbenv
   export PATH=$RBENV_ROOT/bin:$PATH
-  eval "$(rbenv init - --no-rehash)"
+  export PATH="$RBENV_ROOT/versions/$(cat $RBENV_ROOT/version)/bin":$PATH
+  # eval "$(rbenv init - --no-rehash)"
 fi
 
 if [[ -e "$HOME/.phpenv" ]]; then
