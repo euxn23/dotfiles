@@ -57,7 +57,12 @@ of_ft = 'ruby'
 # html
 [[plugin]]
 repo = 'mattn/emmet-vim'
-of_ft = ['html', 'xml']
+of_ft = ['html', 'slim', 'xml']
+
+# slim
+[[plugin]]
+repo = 'slim-template/vim-slim'
+of_ft = ['slim']
 
 # markup
 [[plugins]]
