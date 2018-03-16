@@ -17,11 +17,12 @@ hook_add = 'let g:go_fmt_command = "goimports"'
 
 # js
 [[plugins]]
-repo = 'othree/yajs.vim'
+repo = 'pangloss/vim-javascript'
 on_ft = ['js', 'mjs', 'jsx']
 [[plugins]]
 repo = 'mxw/vim-jsx'
 on_ft = ['js', 'mjs', 'jsx']
+hook_add = 'let g:jsx_ext_required = 1'
 
 # ts
 [[plugins]]
