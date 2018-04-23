@@ -2,13 +2,15 @@
 
 . := $(PWD)
 
-all: zsh-precheck cli dotfiles editorconfig git neovim tmux vim zsh
+all: zsh-precheck cli dotfiles editorconfig git ideavim neovim tmux vim zsh
 dotfiles:
 	[ -e $(HOME)/.dotfiles ] || ln -sf $(.) $(HOME)/.dotfiles
 editorconfig:
 	ln -sf $(.)/.editorconfig $(HOME)
 git:
 	ln -sf $(.)/.gitconfig $(.)/.gitignore $(.)/.tigrc $(HOME)
+ideavim:
+	ln -sf $(.)/.vimrc $(HOME)/.ideavimrc
 neovim:
 	mkdir -p $(HOME)/.config/nvim
 	ln -sf $(.)/.vimrc $(HOME)/.config/nvim/init.vim
