@@ -2,7 +2,7 @@
 
 . := $(PWD)
 
-all: zsh-precheck dotfiles editorconfig git neovim tmux vim zsh
+all: zsh-precheck cli dotfiles editorconfig git neovim tmux vim zsh
 dotfiles:
 	[ -e $(HOME)/.dotfiles ] || ln -sf $(.) $(HOME)/.dotfiles
 editorconfig:
@@ -42,4 +42,7 @@ zprezto:
 	ln -sf $(.)/.zprezto/zlogin $(HOME)/.zlogin
 	ln -sf $(.)/.zprezto/zlogout $(HOME)/.zlogout
 	ln -sf $(.)/.zshrc $(.)/.zpreztorc $(HOME)
-
+cli:
+	if type go &>/dev/null ; then \
+		bash ./install-cli-via-go.sh ; \
+	fi
