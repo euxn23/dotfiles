@@ -16,7 +16,7 @@ neovim:
 	ln -sf $(.)/.vimrc $(HOME)/.config/nvim/init.vim
 	ln -sf $(.)/dein.toml $(.)/dein_lazy.toml $(HOME)/.config/nvim/
 shell:
-	ln -sf $(.)/.profile $(.)/.bashrc.extra $(.)/.bashrc.alias $(.)/.bashrc.post $(HOME)
+	ln -sf $(.)/.profile $(.)/.bashrc $(.)/.bashrc.extra $(.)/.bashrc.alias $(.)/.bashrc.post $(HOME)
 tmux:
 	git -C $(HOME)/.tmux/plugins/tpm pull || git clone https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm
 	ln -sf $(.)/.tmux.conf $(HOME)
