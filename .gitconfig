@@ -43,9 +43,10 @@
   pi      = !git push-i
   i       = !git branch-i
   pull-f  = !git fetch && git reset --hard origin/$(git current)
-  r       = rebase
+  r       = !git fp && git rebase
   ra      = rebase --abort
   rc      = rebase --continue
+  rs      = rebase --skip
   ri      = !git rebase-i
   rod     = !git fetch && git rebase origin/develop
   rom     = !git fetch && git rebase origin/master
