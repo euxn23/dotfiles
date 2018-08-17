@@ -4,6 +4,7 @@ alias ipython='gpython -m IPython'
 alias mx='tmux -u'
 alias fzx='fzf-tmux'
 alias pj=cd-gitroot
+alias ghqm='GHQ_ROOT=$HOME/src/master ghq'
 
 # Util command
 alias chrome='open -a Google\ Chrome'
