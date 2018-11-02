@@ -16,7 +16,7 @@
   cc      = !git checkout-i
   ccb     = !git checkout-b-i
   cancel  = reset --soft HEAD^
-  cmfy    = !git current | perl -pe 's/_/ /g' | perl -pe 's|fix/|fix: |g' | perl -pe 's|feature/|feat: |g'
+  cmfy    = !git current | perl -pe 's/_/ /g' | perl -pe 's|fix/|: |g' | perl -pe 's|feature/|: |g'
   cmfyu   = !git current | perl -pe 's/_/ /g' | perl -pe 's|fix/||g' | perl -pe 's|feature/||g' | perl -nle 'print ucfirst'
   cmfx    = "!git commit -m \"$(git cmfyu)\""
   cmfxe   = "!git commit -m \"$(git cmfy)\" && git amende"
