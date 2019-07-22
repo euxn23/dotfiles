@@ -3,10 +3,16 @@ export PATH=$HOME/src/github.com/junegunn/fzf/bin:$PATH
 export GHQ=$HOME/src
 export FZF_DEFAULT_OPTS="--color=bg+:12 --exit-0 --inline-info --multi --reverse --select-1"
 
-if [[ -e "$HOME/.nvm" ]]; then
-  export NVM_DIR=~/.nvm
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" --no-use
-  export PATH=$NVM_DIR/versions/node/$(cat $NVM_DIR/alias/default)/bin:$PATH
+# if [[ -e "$HOME/.nvm" ]]; then
+  # export NVM_DIR=~/.nvm
+  # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" --no-use
+  # export PATH=$NVM_DIR/versions/node/$(cat $NVM_DIR/alias/default)/bin:$PATH
+# fi
+
+if [[ -e "$HOME/.volta" ]]; then
+  export VOLTA_HOME="$HOME/.volta"
+  [ -s "$VOLTA_HOME/load.sh" ] && . "$VOLTA_HOME/load.sh"
+  export PATH="$VOLTA_HOME/bin:$PATH"
 fi
 
 if [[ -e "$HOME/.pyenv" ]]; then

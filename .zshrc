@@ -1,41 +1,26 @@
 autoload -Uz compinit
-export SHELL="$(which zsh)"
-
-# zplug
-source $HOME/.zplug/init.zsh
-
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-history-substring-search"
-
-zplug "mollifier/cd-gitroot"
-zplug "stedolan/jq", \
-  from:gh-r, \
-  as:command, \
-  rename-to:jq
-zplug "b4b4r07/emoji-cli", \
-  on:"stedolan/jq"
-
-zplug load
-
 
 HISTFILE=~/.zhistory
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-export LSCOLORS=ExfxcxdxbxGxDxabagacad
-zstyle ':completion:*' list-colors ${LSCOLORS}
-zstyle ':completion:*:default' menu select=2
-
-setopt share_history
-setopt hist_ignore_all_dups
-
-export TERM='screen-256color'
-
 # Source Prezto
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
+
+export LSCOLORS=ExfxcxdxbxGxDxabagacad
+zstyle ':completion:*' list-colors ${LSCOLORS}
+zstyle ':completion:*:default' menu select=2
+
+export PROMPT=$'%F{0}%K{12}$(node -v){}\uE0B0%k%f${(r:($COLUMNS-${#$(node -v)}-${#${_prompt_sorin_git}}):: :)}${_prompt_sorin_git}\n${SSH_TTY:+"%F{9}%n%f%F{7}@%f%F{3}%m%f "}%F{12}${_prompt_sorin_pwd}%(!. %B%F{1}#%f%b.)${editor_info[keymap]} '
+# unset RPROMPT
+
+setopt inc_append_history
+setopt share_history
+setopt hist_ignore_all_dups
+
+export TERM='screen-256color'
 
 # Source fzf
 if type fzf &>/dev/null; then
@@ -65,3 +50,4 @@ if type fzf &>/dev/null; then
 fi
 
 source $HOME/.bashrc.extra &>/dev/null
+

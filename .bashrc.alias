@@ -9,7 +9,7 @@ alias ghqm='GHQ_ROOT=$HOME/src/master ghq'
 # Util command
 alias chrome='open -a Google\ Chrome'
 alias shl='exec $SHELL -l'
-alias zhl='exec zsh -l'
+alias zhl='exec /usr/local/bin/zsh -l'
 alias pg='ps aux | grep'
 alias pa='ps aux | tail -n +2| fzf'
 alias pk="pa | awk '{print \$2}' | xargs kill -9"
@@ -18,5 +18,6 @@ alias pk="pa | awk '{print \$2}' | xargs kill -9"
 alias docker-rm="docker ps -a | tail -n +2 | fzf | awk '{print \$1}' | xargs docker rm"
 alias docker-rmi="docker images | tail -n +2 | fzf | awk '{print \$3}' | xargs docker rmi"
 alias docker-run="docker images | tail -n +2 | fzf | awk '{print \$3}' | xargs docker run"
+alias docker-attach="docker ps | tail -n +2 | fzf | awk '{print \$1}' | xargs docker attach"
 alias docker-build="docker build -t `(pwd | xargs basename)`-image . --build-arg http_proxy=$PROXY --build-arg https_proxy=$PROXY"
 

@@ -1,4 +1,5 @@
 source $HOME/.bashrc.alias &>/dev/null
 source $HOME/.bashrc.env   &>/dev/null
 source $HOME/.bashrc.post  &>/dev/null
+source $HOME/.bashrc.npm  &>/dev/null
 

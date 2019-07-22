@@ -29,6 +29,8 @@ endif
 
 filetype plugin indent on
 
+set visualbell
+
 " highlight
 syntax enable
 set showmatch
