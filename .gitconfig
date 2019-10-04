@@ -1,0 +1,77 @@
+[include]
+  path = ~/.gitconfig.credentials
+[alias]
+  a       = add .
+  adp     = add -p
+  amend   = commit --amend --no-edit
+  amende  = commit --amend
+  author  = "!git commit --amend --no-edit --author=\"$(git config user.name) <$(git config user.email)>\""
+  ba      = branch -a
+  bd      = branch -d
+  bdd     = !git branch --merged | grep -v '*' | xargs -I{} git branch -d {}
+  bdf     = branch -D
+  bdi     = branch-d-i
+  cb      = !git checkout -b
+  cc      = !git checkout-i
+  ccb     = !git checkout-b-i
+  cancel  = reset --soft HEAD^
+  cmex    = !git current | perl -pe 's/_/ /g' | perl -pe 's|fix/|: |g' | perl -pe 's|feature/|: |g'
+  cmexu   = !git current | perl -pe 's/_/ /g' | perl -pe 's|fix/||g' | perl -pe 's|feature/||g' | perl -nle 'print ucfirst'
+  cmmex   = "!git commit -m \"$(git cmex)\""
+  cmmexe  = "!git commit -m \"$(git cmex)\" && git amende"
+  cmm     = commit -m
+  cmminit = commit -m 'Initial Commit' --allow-empty
+  cmmimpl = commit -m 'feat: add initial implementation'
+  cout    = checkout
+  d       = checkout develop
+  dev     = checkout develop
+  develop = checkout develop
+  df      = diff
+  dfc     = diff --cached
+  fp      = fetch -p
+  graph   = log --oneline --graph --decorate=full
+  m       = checkout master
+  master  = !git checkout master
+  po      = push origin
+  poc     = !git push origin $(git symbolic-ref --short HEAD)
+  pocd    = !git push origin $(git symbolic-ref --short HEAD):deploy/develop
+  pocf    = !git poc -f
+  pof     = push origin -f
+  pod     = push origin develop
+  pom     = push origin master
+  pi      = !git push-i
+  i       = !git branch-i
+  pull-f  = !git fetch && git reset --hard origin/$(git current)
+  r       = !git fp && git rebase
+  ra      = rebase --abort
+  rc      = rebase --continue
+  rs      = rebase --skip
+  ri      = !git rebase-i
+  rod     = !git fetch && git rebase origin/develop
+  rom     = !git fetch && git rebase origin/master
+  st      = stash
+  stl     = stash list
+  stp     = stash pop
+  ss      = status --short --branch
+  unstage = reset HEAD --
+
+  branch-i     = !git branch -a | fzf | sed -e 's/\\*//g'
+  checkout-i   = !git checkout $(git branch-i | sed -e 's|remotes/origin/||g')
+  checkout-b-i = !git checkout -b $(git branch-i | sed -e 's|remotes/origin/||g')
+  copy-i       = !git git checkout $(git branch-i) -- $1
+  push-i       = !git push origin $(git branch-i)
+  branch-d-i   = !git branch -D $(git branch-i | sed -e 's/\\*//g')
+  rebase-i     = !git rebase -i $(git log --oneline | fzf | awk '{ print $1 }')^
+[core]
+  excludesfile  = ~/.gitignore
+	fileMode = true
+[ghq]
+  root    = ~/src
+[color]
+	ui      = true
+[diff]
+	compactionHeuristic = true
+[commit]
+	cleanup = strip
+[grep]
+	lineNumber = true

@@ -1,0 +1,12 @@
+.env
+.envrc
+
+.idea
+*.iml
+.vscode
+
+npm-debug.*
+*.gem
+yarn-error.log
+
+.DS_Store

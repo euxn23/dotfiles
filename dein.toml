@@ -1,0 +1,71 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+let g:deoplete#enable_at_startup = 1
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+'''
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+[[plugins]]
+repo = 'blueshirts/darcula'
+hook_add = 'colorscheme darcula'
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'w0rp/ale'
+hook_add = '''
+let g:ale_fixers = {
+\   'go': ['goimports'],
+\   'javascript': ['prettier'],
+\   'typescript': ['prettier'],
+\   'json': ['prettier'],
+\   'python': ['flake8', 'mypy'],
+\   'ruby': ['rubocop', 'rails_best_practice'],
+\   'vim': ['vint']
+\}
+let g:ale_completion_enabled = 1
+'''
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
+hook_add = '''
+let g:ctrlp_match_window = 'order:ttb,min:20,max:20,results:100'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_types = ['fil']
+let g:ctrlp_extensions = ['funky', 'commandline']
+command! CtrlPCommandLine call ctrlp#init(ctrlp#commandline#id())
+let g:ctrlp_funky_matchtype = 'path'
+
+if executable('ag')
+  let g:ctrlp_use_caching=0
+  let g:ctrlp_user_command='ag %s -i --hidden -g ""'
+endif
+'''
+[[plugins]]
+repo = 'scrooloose/nerdcommenter'
+hook_add = '''
+map <C-_> <Leader>c<space>
+let g:NERDSpaceDelims = 1
+'''
+
+[[plugins]]
+repo = "skywind3000/asyncrun.vim"
+
+# [[plugins]]
+# repo = "himanoa/ttene.nvim"
+# build = 'magicalstick | grep てねっ[0-9] | xargs -P4 -In1 wget n1 -P voices/'
