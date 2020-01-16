@@ -23,6 +23,7 @@
   cmminit = commit -m 'Initial Commit' --allow-empty
   cmmimpl = commit -m 'feat: add initial implementation'
   cout    = checkout
+  current = !git rev-parse --abbrev-ref HEAD
   d       = checkout develop
   dev     = checkout develop
   develop = checkout develop
