@@ -6,10 +6,11 @@ export PATH=$HOME/bin:$PATH
 export GHQ=$HOME/src
 export XDG_CONFIG_HOME=$HOME/.config
 
-export COPY=`uname | grep 'darwin' && echo -n 'pbdopy' || echo -n 'xsel -bi'`
-export PASTE=`uname | grep 'darwin' && echo -n 'pbpaste' || echo -n 'xsel -bo'`
+export COPY=`uname | grep -i 'darwin' &>/dev/null && echo -n 'pbcopy' || echo -n 'xsel -bi'`
+export PASTE=`uname | grep -i 'darwin' &>/dev/null && echo -n 'pbpaste' || echo -n 'xsel -bo'`
 export FZF_DEFAULT_OPTS="--color=bg+:12 --exit-0 --inline-info --multi --reverse --select-1"
 
+. $(brew --prefix asdf)/asdf.sh
 
 # --- node.js ---
 

@@ -20,7 +20,7 @@
   cmmex   = "!git commit -m \"$(git cmex)\""
   cmmexe  = "!git commit -m \"$(git cmex)\" && git amende"
   cmm     = commit -m
-  cmminit = commit -m 'Initial Commit' --allow-empty
+  cmminit = commit -m 'initialized' --allow-empty
   cmmimpl = commit -m 'feat: add initial implementation'
   cout    = checkout
   current = !git rev-parse --abbrev-ref HEAD
@@ -34,9 +34,6 @@
   m       = checkout master
   master  = !git checkout master
   po      = push origin
-  poc     = !git push origin $(git symbolic-ref --short HEAD)
-  pocd    = !git push origin $(git symbolic-ref --short HEAD):deploy/develop
-  pocf    = !git poc -f
   pof     = push origin -f
   pod     = push origin develop
   pom     = push origin master
@@ -54,6 +51,7 @@
   stl     = stash list
   stp     = stash pop
   ss      = status --short --branch
+  tigi    = tig-i
   unstage = reset HEAD --
 
   branch-i     = !git branch -a | fzf | sed -e 's/\\*//g'
@@ -63,6 +61,7 @@
   push-i       = !git push origin $(git branch-i)
   branch-d-i   = !git branch -D $(git branch-i | sed -e 's/\\*//g')
   rebase-i     = !git rebase -i $(git log --oneline | fzf | awk '{ print $1 }')^
+  tig-i        = !tig $(git branch -a | fzf | sed -e 's/\\*//g')
 [core]
   excludesfile  = ~/.gitignore
 	fileMode = true
@@ -76,3 +75,5 @@
 	cleanup = strip
 [grep]
 	lineNumber = true
+[push]
+	default = current

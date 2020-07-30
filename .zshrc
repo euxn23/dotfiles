@@ -51,3 +51,9 @@ fi
 
 source $HOME/.bashrc.extra &>/dev/null
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/yuta.suzuki/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yuta.suzuki/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/yuta.suzuki/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yuta.suzuki/google-cloud-sdk/completion.zsh.inc'; fi
