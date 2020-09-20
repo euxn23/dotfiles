@@ -1,5 +1,5 @@
 [include]
-  path = ~/.gitconfig.credentials
+  path = ~/.gitconfig.env
 [alias]
   a       = add .
   adp     = add -p
@@ -15,8 +15,8 @@
   cc      = !git checkout-i
   ccb     = !git checkout-b-i
   cancel  = reset --soft HEAD^
-  cmex    = !git current | perl -pe 's/_/ /g' | perl -pe 's|fix/|: |g' | perl -pe 's|feature/|: |g'
-  cmexu   = !git current | perl -pe 's/_/ /g' | perl -pe 's|fix/||g' | perl -pe 's|feature/||g' | perl -nle 'print ucfirst'
+  cmex    = !git current | perl -pe 's/_/ /g' | perl -pe 's|fix/|fix: |g' | perl -pe 's|feature/|feat: |g' | perl -pe 's|chore/|chore: |g'
+  cmexu   = !git current | perl -pe 's/_/ /g' | perl -pe 's|fix/||g' | perl -pe 's|feature/||g' | perl -pe 's|chore/||g' | perl -nle 'print ucfirst'
   cmmex   = "!git commit -m \"$(git cmex)\""
   cmmexe  = "!git commit -m \"$(git cmex)\" && git amende"
   cmm     = commit -m
@@ -53,22 +53,23 @@
   ss      = status --short --branch
   tigi    = tig-i
   unstage = reset HEAD --
+  wip     = commit --no-verify
 
-  branch-i     = !git branch -a | fzf | sed -e 's/\\*//g'
+  branch-i     = !git branch -a | sk | sed -e 's/\\*//g'
   checkout-i   = !git checkout $(git branch-i | sed -e 's|remotes/origin/||g')
   checkout-b-i = !git checkout -b $(git branch-i | sed -e 's|remotes/origin/||g')
   copy-i       = !git git checkout $(git branch-i) -- $1
   push-i       = !git push origin $(git branch-i)
   branch-d-i   = !git branch -D $(git branch-i | sed -e 's/\\*//g')
-  rebase-i     = !git rebase -i $(git log --oneline | fzf | awk '{ print $1 }')^
-  tig-i        = !tig $(git branch -a | fzf | sed -e 's/\\*//g')
+  rebase-i     = !git rebase -i $(git log --oneline | skim | awk '{ print $1 }')^
+  tig-i        = !tig $(git branch -a | skim | sed -e 's/\\*//g')
 [core]
   excludesfile  = ~/.gitignore
 	fileMode = true
 [ghq]
-  root    = ~/src
+  root = ~
 [color]
-	ui      = true
+	ui = true
 [diff]
 	compactionHeuristic = true
 [commit]

@@ -1,44 +1,5 @@
 [[plugins]]
-repo = 'Shougo/neosnippet'
-hook_source = '''
-  imap <C-k> <Plug>(neosnippet_expand_or_jump)
-  smap <C-k> <Plug>(neosnippet_expand_or_jump)
-  xmap <C-k> <Plug>(neosnippet_expand_target)
-'''
-on_event  = 'InsertEnter'
-on_ft = ['snippet']
-depends = ['neosnippet-snippets']
-
-[[plugins]]
-repo = 'pangloss/vim-javascript'
-on_ft = ['js', 'cjs', 'mjs', 'jsx']
-[[plugins]]
-repo = 'mxw/vim-jsx'
-on_ft = ['js', 'cjs', 'mjs', 'jsx']
-hook_add = 'let g:jsx_ext_required = 1'
-
-[[plugins]]
-repo = 'Quramy/tsuquyomi'
-on_ft = ['typescript', 'ts', 'tsx']
-hook_add = 'let g:tsuquyomi_completion_detail = 1'
-hook_add = 'autocmd FileType typescript setlocal completeopt+=menu,preview'
-
-[[plugins]]
-repo = 'leafgarland/typescript-vim'
-on_ft = ['typescript', 'ts', 'tsx']
-hook_add = 'let g:typescript_indent_disable = 0'
-
-[[plugins]]
-repo = 'davidhalter/jedi-vim'
-on_event = 'InsertEnter'
-on_ft = 'python'
-hook_add = 'let g:jedi#force_py_version = 3'
-
-[[plugins]]
-repo = 'vim-ruby/vim-ruby'
-of_ft = 'ruby'
-
-# markup
+repo = 'prettier/vim-prettier'
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
 on_ft = 'markdown'
@@ -50,12 +11,5 @@ let g:vim_markdown_folding_disabled=1
 repo = 'ekalinin/Dockerfile.vim'
 on_ft = 'Dockerfile'
 [[plugins]]
-repo = 'chase/vim-ansible-yaml'
-on_ft = ['yaml', 'yml']
-[[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
-[[plugins]]
-repo = 'IN3D/vim-raml'
-on_ft = 'raml'
-

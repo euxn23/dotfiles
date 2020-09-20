@@ -1,4 +1,4 @@
 set main-view = id:width=8 date author commit-title:graph=yes,refs=yes
 set split-view-height = 80%
 set diff-context = 4
-bind main c !@bash -c "echo -n %(commit) | pbcopy"
+bind main c !@bash -c "echo -n %(commit) | $COPY"

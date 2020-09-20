@@ -82,16 +82,8 @@ scrolling:
 # Font configuration (changes require restart)
 font:
   normal:
-    family: Hack
+    family: 'FiraCode Nerd Font'
     style: Regular
-
-  bold:
-    family: Hack
-    style: Bold
-
-  italic:
-    family: Hack
-    style: Italic
 
   # Normal (roman) font face
   #normal:
@@ -379,7 +371,7 @@ working_directory: None
 #
 # Alacritty will fall back to the WinPTY automatically if the ConPTY
 # backend cannot be initialized.
-enable_experimental_conpty_backend: false
+enable_experimental_conpty_backend: true
 
 # Send ESC (\x1b) before characters when alt is pressed.
 alt_send_esc: true

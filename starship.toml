@@ -1,0 +1,35 @@
+add_newline = false
+
+prompt_order = [
+    "username",
+    "hostname",
+    "nodejs",
+    "rust",
+    "custom",
+    "cmd_duration",
+    "git_branch",
+    "git_state",
+    "line_break",
+    "directory",
+    "character",
+]
+
+scan_timeout = 10
+
+[hostname]
+ssh_only = false
+prefix = "⟪"
+suffix = "⟫"
+trim_at = ".local"
+
+[git_branch]
+symbol = " "
+disabled = true
+
+[nodejs]
+symbol = " "
+disabled = true
+
+[rust]
+symbol = " "
+disabled = true
