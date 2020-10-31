@@ -1,6 +1,10 @@
+# override system command
+alias ls=exa
+alias la='ls -la'
+alias grep=rg
+
 # Application option
 alias tmux='tmux -u'
-alias sk="sk --color=bg+:12 --exit-0 --inline-info --multi --reverse --select-1"
 
 # restart shell
 alias shl='exec $SHELL -l'

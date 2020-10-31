@@ -3,7 +3,7 @@
 . := $(PWD)
 XDG_CONFIG_HOME ?= $(HOME)/.config
 
-all: dotfiles editorconfig git ideavim neovim tmux vim zsh
+all: asdf dotfiles editorconfig git ideavim neovim tmux vim zsh
 asdf:
 	git -C $(HOME)/.asdf pull 2>/dev/null || git clone https://github.com/asdf-vm/asdf $(HOME)/.asdf
 	/bin/sh bin/asdf-install.sh
@@ -27,6 +27,9 @@ neovim:
 	mkdir -p $(XDG_CONFIG_HOME)/nvim
 	ln -sf $(.)/.vimrc $(XDG_CONFIG_HOME)/nvim/init.vim
 	ln -sf $(.)/dein.toml $(.)/dein_lazy.toml $(XDG_CONFIG_HOME)/nvim/
+rhq:
+	mkdir -p $(XDG_CONFIG_HOME)/rhq
+	ln -sf $(.)/rhq.toml $(XDG_CONFIG_HOME)/rhq/config.toml
 shell:
 	ln -sf $(.)/.profile $(.)/.bashrc $(.)/.bashrc.extra $(.)/.bashrc.alias $(.)/.bashrc.post $(HOME)
 	git -C $(HOME)/.skim pull 2>/dev/null || git clone --depth 1 git@github.com:lotabout/skim.git $(HOME)/.skim

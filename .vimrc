@@ -5,7 +5,6 @@ let s:cache_home = vim_dir . '/.cache'
 let s:dein_dir = expand('~/.config/dein')
 let s:dein_repo_dir = expand('~/github.com/Shougo/dein.vim')
 let g:python_host_prog = ''
-let g:python3_host_prog = system('echo -n $(which python3)')
 
 if !isdirectory(s:dein_repo_dir)
   execute '!git clone https://github.com/Shougo/dein.vim.git' s:dein_repo_dir

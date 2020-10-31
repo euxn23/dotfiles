@@ -8,17 +8,18 @@
   author  = "!git commit --amend --no-edit --author=\"$(git config user.name) <$(git config user.email)>\""
   ba      = branch -a
   bd      = branch -d
-  bdd     = !git branch --merged | grep -v '*' | xargs -I{} git branch -d {}
+  bdd     = !git branch --merged | grep -v '*' | grep -v 'master' | xargs -I{} git branch -d {}
   bdf     = branch -D
   bdi     = branch-d-i
-  cb      = !git checkout -b
-  cc      = !git checkout-i
-  ccb     = !git checkout-b-i
+  bdai    = branch-d-a-i
+  ci      = checkout-i
   cancel  = reset --soft HEAD^
   cmex    = !git current | perl -pe 's/_/ /g' | perl -pe 's|fix/|fix: |g' | perl -pe 's|feature/|feat: |g' | perl -pe 's|chore/|chore: |g'
   cmexu   = !git current | perl -pe 's/_/ /g' | perl -pe 's|fix/||g' | perl -pe 's|feature/||g' | perl -pe 's|chore/||g' | perl -nle 'print ucfirst'
+  cmet    = !git current | perl -pe 's|feature/(.*)/.*|$1|g' | perl -pe 's|fix/(.*)/.*|$1|g'
   cmmex   = "!git commit -m \"$(git cmex)\""
   cmmexe  = "!git commit -m \"$(git cmex)\" && git amende"
+  cmmete  = "!git commit --no-verify -m \"$(git cmet)\" && git amende"
   cmm     = commit -m
   cmminit = commit -m 'initialized' --allow-empty
   cmmimpl = commit -m 'feat: add initial implementation'
@@ -47,6 +48,8 @@
   ri      = !git rebase-i
   rod     = !git fetch && git rebase origin/develop
   rom     = !git fetch && git rebase origin/master
+  sc      = !git switch -c
+  si      = !git switch-i
   st      = stash
   stl     = stash list
   stp     = stash pop
@@ -55,14 +58,17 @@
   unstage = reset HEAD --
   wip     = commit --no-verify
 
-  branch-i     = !git branch -a | sk | sed -e 's/\\*//g'
-  checkout-i   = !git checkout $(git branch-i | sed -e 's|remotes/origin/||g')
-  checkout-b-i = !git checkout -b $(git branch-i | sed -e 's|remotes/origin/||g')
+  branch-i     = !git branch | sed -e 's|remotes/origin/||g' | sk
+  branch-a-i   = !git branch -a | sk | sed -e 's/\\*//g'
+  branch-d-i   = !git branch -D $(git branch-i)
+  branch-d-a-i = !git branch -D $(git branch-a-i)
+  checkout-i   = !git checkout --track $(git branch-a-i)
   copy-i       = !git git checkout $(git branch-i) -- $1
   push-i       = !git push origin $(git branch-i)
-  branch-d-i   = !git branch -D $(git branch-i | sed -e 's/\\*//g')
-  rebase-i     = !git rebase -i $(git log --oneline | skim | awk '{ print $1 }')^
-  tig-i        = !tig $(git branch -a | skim | sed -e 's/\\*//g')
+  rebase-i     = !git rebase -i $(git log --oneline | sk | awk '{ print $1 }')^
+  switch-i     = !git switch $(git branch-a-i)
+  tig-i        = !tig $(git branch-a-i)
+  pri          = !git checkout-i && git push origin && gh pr create
 [core]
   excludesfile  = ~/.gitignore
 	fileMode = true
