@@ -20,24 +20,21 @@
   cmmex   = "!git commit -m \"$(git cmex)\""
   cmmexe  = "!git commit -m \"$(git cmex)\" && git amende"
   cmmete  = "!git commit --no-verify -m \"$(git cmet)\" && git amende"
-  cmm     = commit -m
+  cmm     = commit --no-verify -m
   cmminit = commit -m 'initialized' --allow-empty
   cmmimpl = commit -m 'feat: add initial implementation'
   cout    = checkout
   current = !git rev-parse --abbrev-ref HEAD
-  d       = checkout develop
-  dev     = checkout develop
-  develop = checkout develop
+  d       = "!git checkout \"$(git default-branch)\""
   df      = diff
   dfc     = diff --cached
   fp      = fetch -p
   graph   = log --oneline --graph --decorate=full
-  m       = checkout master
-  master  = !git checkout master
+  main    = checkout main
   po      = push origin
   pof     = push origin -f
-  pod     = push origin develop
-  pom     = push origin master
+  pod     = !git push origin $(git default-branch)
+  prod    = checkout production
   pi      = !git push-i
   i       = !git branch-i
   pull-f  = !git fetch && git reset --hard origin/$(git current)
@@ -46,8 +43,7 @@
   rc      = rebase --continue
   rs      = rebase --skip
   ri      = !git rebase-i
-  rod     = !git fetch && git rebase origin/develop
-  rom     = !git fetch && git rebase origin/master
+  rod     = !git fetch && git rebase origin/$(git default-branch)
   sc      = !git switch -c
   si      = !git switch-i
   st      = stash
@@ -56,7 +52,9 @@
   ss      = status --short --branch
   tigi    = tig-i
   unstage = reset HEAD --
-  wip     = commit --no-verify
+  wip     = commit --no-verify -m 'wip'
+
+  default-branch = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
 
   branch-i     = !git branch | sed -e 's|remotes/origin/||g' | sk
   branch-a-i   = !git branch -a | sk | sed -e 's/\\*//g'
@@ -84,3 +82,6 @@
 	lineNumber = true
 [push]
 	default = current
+[user]
+	name = euxn23
+	email = euxn23@github.com

@@ -1,5 +1,5 @@
 root = "~"
 
 includes = [
-  "~/github.com"
+  "~/github.com/japan-d2/**"
 ]

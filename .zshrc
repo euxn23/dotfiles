@@ -18,7 +18,7 @@ setopt inc_append_history
 setopt share_history
 setopt hist_ignore_all_dups
 
-export TERM='xterm-256color'
+export TERM=xterm-256color
 
 # load skim completion
 source $HOME/skim/shell/completion.zsh &>/dev/null
