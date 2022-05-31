@@ -13,5 +13,6 @@ privkey.pem
 npm-debug.*
 *.gem
 yarn-error.log
+node_modules.*
 
 .DS_Store

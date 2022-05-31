@@ -56,7 +56,7 @@
   ss      = status --short --branch
   tigi    = tig-i
   unstage = reset HEAD --
-  wip     = commit --no-verify
+  wip     = commit --no-verify -m 'wip'
 
   branch-i     = !git branch | sed -e 's|remotes/origin/||g' | sk
   branch-a-i   = !git branch -a | sk | sed -e 's/\\*//g'

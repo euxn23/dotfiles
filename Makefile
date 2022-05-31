@@ -7,6 +7,7 @@ all: asdf dotfiles editorconfig git ideavim neovim tmux vim zsh
 asdf:
 	git -C $(HOME)/.asdf pull 2>/dev/null || git clone https://github.com/asdf-vm/asdf $(HOME)/.asdf
 	/bin/sh bin/asdf-install.sh
+cargo:
 	/bin/sh bin/cargo-install.sh
 alacritty-unix:
 	mkdir -p $(XDG_CONFIG_HOME)/alacritty
@@ -32,12 +33,12 @@ rhq:
 	ln -sf $(.)/rhq.toml $(XDG_CONFIG_HOME)/rhq/config.toml
 shell:
 	ln -sf $(.)/.profile $(.)/.bashrc $(.)/.bashrc.extra $(.)/.bashrc.alias $(.)/.bashrc.post $(HOME)
-	git -C $(HOME)/.skim pull 2>/dev/null || git clone --depth 1 git@github.com:lotabout/skim.git $(HOME)/.skim
 tmux:
 	git -C $(HOME)/.tmux/plugins/tpm pull 2>/dev/null || git clone https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm
 	ln -sf $(.)/.tmux.conf $(HOME)
 vim:
-	ln -sf $(.)/.vimrc $(.)/dein.toml $(.)/dein_lazy.toml $(HOME)
+	mkdir -p $(XDG_CONFIG_HOME)/vim
+	ln -sf $(.)/.vimrc $(.)/dein.toml $(.)/dein_lazy.toml $(XDG_CONFIG_HOME)/vim
 zsh: shell
 	/bin/sh bin/zsh-precheck.sh 1>/dev/null
 	git -C $(HOME)/.zprezto pull 2>/dev/null || git clone --recursive https://github.com/sorin-ionescu/prezto.git $(HOME)/.zprezto

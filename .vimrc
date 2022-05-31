@@ -1,10 +1,13 @@
 set encoding=utf-8
+scriptencoding utf-8
 
 let g:vim_dir = has("nvim") ? expand('~/.config/nvim') : expand('~/.vim')
 let s:cache_home = vim_dir . '/.cache'
 let s:dein_dir = expand('~/.config/dein')
-let s:dein_repo_dir = expand('~/github.com/Shougo/dein.vim')
-let g:python_host_prog = ''
+let s:dein_repo_dir = expand('~/.config/dein.vim')
+let g:loaded_python_provider = 0
+let g:loaded_ruby_provider = 0
+let g:python3_host_prog = expand('~/.asdf/shims/python3')
 
 if !isdirectory(s:dein_repo_dir)
   execute '!git clone https://github.com/Shougo/dein.vim.git' s:dein_repo_dir
@@ -49,13 +52,11 @@ syntax enable
 set showmatch
 set matchtime=3
 set cursorline
-set guicursor=
 
 " encoding
 set fileencoding=utf-8
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932
 set fileformats=unix,dos,mac
-set ambiwidth=double
 
 " statusline
 set laststatus=2
@@ -65,13 +66,13 @@ set ruler
 set wildmenu
 set history=5000
 let g:lightline = {
-\   'colorscheme': 'wombat',
-\   'component': {
-\     'readonly': '%{&readonly?"🔒":""}',
-\   },
-\   'separator': { 'left': '', 'right': '' },
-\   'subseparator': { 'left': '', 'right': '' },
-\ }
+\  'colorscheme': 'wombat',
+\  'component': {
+\    'readonly': '%{&readonly?"🔒":""}',
+\  },
+\  'separator': { 'left': '', 'right': '' },
+\  'subseparator': { 'left': '', 'right': '' },
+\}
 
 " indent
 set expandtab
@@ -92,11 +93,26 @@ nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>
 set whichwrap=b,s,h,l,<,>,[,],~
 set number
 set mouse=a
-if !has("nvim")
+
+if has("nvim")
+  if system('uname -a | grep microsoft') != ''
+    let g:clipboard = {
+    \  'name': 'myClipboard',
+    \  'copy': {
+    \     '+': '/mnt/c/wsl/bin/win32yank.exe -i',
+    \     '*': '/mnt/c/wsl/bin/win32yank.exe -i',
+    \   },
+    \  'paste': {
+    \     '+': '/mnt/c/wsl/bin/win32yank.exe -o',
+    \     '*': '/mnt/c/wsl/bin/win32yank.exe -o',
+    \  },
+    \  'cache_enabled': 1,
+    \}
+  endif
+  set clipboard+=unnamedplus
+else
   set ttymouse=xterm2
   set clipboard+=unnamed
-else
-  set clipboard+=unnamedplus
 endif
 
 nnoremap j gj
@@ -109,7 +125,7 @@ set viminfo=
 set backspace=indent,eol,start
 " unlimited undo
 if has('persistent_undo')
-  set undodir=~/.config/nvim/undo
+  let &undodir=vim_dir . 'undo'
   set undofile
 endif
 
@@ -119,4 +135,3 @@ if has("autocmd")
   \   exe "normal! g`\"" |
   \ endif
 endif
-

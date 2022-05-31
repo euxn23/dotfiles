@@ -42,6 +42,8 @@ window:
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
 
+  dynamic_title: true
+
   # Window decorations
   #
   # Values for `decorations`:
@@ -82,7 +84,7 @@ scrolling:
 # Font configuration (changes require restart)
 font:
   normal:
-    family: 'FiraCode Nerd Font'
+    family: 'JetBrainsMono Nerd Font'
     style: Regular
 
   # Normal (roman) font face
@@ -254,7 +256,7 @@ colors:
 #   - Linear
 #
 # Specifying a `duration` of `0` will disable the visual bell.
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
   color: '0xffffff'
@@ -295,7 +297,7 @@ mouse:
   # If this is `true`, the cursor is temporarily hidden when typing.
   hide_when_typing: false
 
-  url:
+  hints:
     # URL launcher
     #
     # This program is executed when clicking on a text which is recognized as a URL.
@@ -324,7 +326,6 @@ selection:
   save_to_clipboard: false
 
 # Allow terminal applications to change Alacritty's window title.
-dynamic_title: true
 
 cursor:
   # Cursor style
