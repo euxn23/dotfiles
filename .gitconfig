@@ -26,11 +26,13 @@
   cout    = checkout
   current = !git rev-parse --abbrev-ref HEAD
   d       = "!git checkout \"$(git default-branch)\""
+  dev     = checkout develop
   df      = diff
   dfc     = diff --cached
   fp      = fetch -p
   graph   = log --oneline --graph --decorate=full
   main    = checkout main
+  master  = checkout master
   po      = push origin
   pof     = push origin -f
   pod     = !git push origin $(git default-branch)
@@ -44,6 +46,7 @@
   rs      = rebase --skip
   ri      = !git rebase-i
   rod     = !git fetch && git rebase origin/$(git default-branch)
+  rho     = !git fetch && git reset --hard origin/$(git current)
   sc      = !git switch -c
   si      = !git switch-i
   st      = stash
@@ -67,6 +70,7 @@
   switch-i     = !git switch $(git branch-a-i)
   tig-i        = !tig $(git branch-a-i)
   pri          = !git checkout-i && git push origin && gh pr create
+  production   = checkout production
 [core]
   excludesfile  = ~/.gitignore
 	fileMode = true
@@ -85,3 +89,10 @@
 [user]
 	name = euxn23
 	email = euxn23@github.com
+[pull]
+	ff = only
+[merge]
+	ff = only
+[credential]
+	helper = store
+

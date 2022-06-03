@@ -1,22 +1,16 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 [[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-[[plugins]]
-repo = 'mattn/vim-lsp-settings'
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete.vim'
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete-lsp.vim'
+repo = 'neoclide/coc.nvim'
+source = 'master'
+build = 'coc#util#install()'
 
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-hook_add = '''
-let g:deoplete#enable_at_startup = 1
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-'''
-[[plugins]]
-repo = 'lighttiger2505/deoplete-vim-lsp'
+# [[plugins]]
+# repo = 'Shougo/deoplete.nvim'
+# hook_add = '''
+# let g:deoplete#enable_at_startup = 1
+# let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+# '''
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 [[plugins]]
