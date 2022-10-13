@@ -4,10 +4,13 @@ HISTFILE=~/.zhistory
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-# Source Prezto
+# Activate utilities from prezto
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
+
+# Activate UI
+eval "$(starship init zsh)"
 
 export LSCOLORS=ExfxcxdxbxGxDxabagacad
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=black,bg=blue'
@@ -20,7 +23,6 @@ setopt hist_ignore_all_dups
 
 export TERM=xterm-256color
 
-# load skim completion
 source $HOME/skim/shell/completion.zsh &>/dev/null
 source $HOME/skim/shell/key-binding.zsh &>/dev/null
 
@@ -30,21 +32,10 @@ function skim-history() {
     zle clear-screen
 }
 
-function skim-ghq() {
-  local selected_dir=$(ghq list -p | sk --query "$LBUFFER")
-  if [ -n "$selected_dir" ]; then
-    BUFFER="cd ${selected_dir}"
-    zle accept-line
-  fi
-  zle clear-screen
-}
-
 zle -N skim-history
 bindkey '^r' skim-history
-zle -N skim-ghq
-bindkey '^]' skim-ghq
 
-eval "$(starship init zsh)"
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 
 source $HOME/.bashrc.extra &>/dev/null
 

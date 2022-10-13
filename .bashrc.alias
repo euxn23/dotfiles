@@ -1,5 +1,4 @@
 # override system command
-alias ls=exa
 alias la='ls -la'
 alias grep=rg
 
@@ -20,3 +19,4 @@ alias docker-rmi="docker images | tail -n +2 | sk | awk '{print \$3}' | xargs do
 alias docker-run="docker images | tail -n +2 | sk | awk '{print \$3}' | xargs docker run"
 alias docker-push="docker images | tail -n +2 | sk | awk '{print \$1 \":\" \$2}' | xargs"
 alias docker-attach="docker ps | tail -n +2 | sk | awk '{print \$1}' | xargs docker attach"
+

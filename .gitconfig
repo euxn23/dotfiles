@@ -12,19 +12,12 @@
   bdf     = branch -D
   bdi     = branch-d-i
   bdai    = branch-d-a-i
-  ci      = checkout-i
   cancel  = reset --soft HEAD^
-  cmex    = !git current | perl -pe 's/_/ /g' | perl -pe 's|fix/|fix: |g' | perl -pe 's|feature/|feat: |g' | perl -pe 's|chore/|chore: |g'
-  cmexu   = !git current | perl -pe 's/_/ /g' | perl -pe 's|fix/||g' | perl -pe 's|feature/||g' | perl -pe 's|chore/||g' | perl -nle 'print ucfirst'
-  cmet    = !git current | perl -pe 's|feature/(.*)/.*|$1|g' | perl -pe 's|fix/(.*)/.*|$1|g'
-  cmmex   = "!git commit -m \"$(git cmex)\""
-  cmmexe  = "!git commit -m \"$(git cmex)\" && git amende"
-  cmmete  = "!git commit --no-verify -m \"$(git cmet)\" && git amende"
-  cmm     = commit --no-verify -m
+  cmm     = commit -m
+  cmmx    = !git extract-branch-name | perl -pe 's/^(.)/\\U$1/g' >| .git/COMMIT_EDITMSG && $EDITOR .git/COMMIT_EDITMSG && cat .git/COMMIT_EDITMSG | git commit --file -
   cmminit = commit -m 'initialized' --allow-empty
   cmmimpl = commit -m 'feat: add initial implementation'
   cout    = checkout
-  current = !git rev-parse --abbrev-ref HEAD
   d       = "!git checkout \"$(git default-branch)\""
   dev     = checkout develop
   df      = diff
@@ -39,14 +32,14 @@
   prod    = checkout production
   pi      = !git push-i
   i       = !git branch-i
-  pull-f  = !git fetch && git reset --hard origin/$(git current)
+  pull-f  = !git fetch && git reset --hard origin/$(git current-branch)
   r       = !git fp && git rebase
   ra      = rebase --abort
   rc      = rebase --continue
   rs      = rebase --skip
   ri      = !git rebase-i
   rod     = !git fetch && git rebase origin/$(git default-branch)
-  rho     = !git fetch && git reset --hard origin/$(git current)
+  rho     = !git fetch && git reset --hard origin/$(git current-branch)
   sc      = !git switch -c
   si      = !git switch-i
   st      = stash
@@ -57,19 +50,21 @@
   unstage = reset HEAD --
   wip     = commit --no-verify -m 'wip'
 
+  author-date = !git rebase HEAD~ --committer-date-is-author-date
+  current-branch = !git rev-parse --abbrev-ref HEAD
   default-branch = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+  extract-branch-name = !git current-branch | perl -pe 's/_/ /g' | perl -pe 's/-/ /g' | perl -pe 's|[^/]+/||g'
 
   branch-i     = !git branch | sed -e 's|remotes/origin/||g' | sk
-  branch-a-i   = !git branch -a | sk | sed -e 's/\\*//g'
+  branch-a-i   = !git branch -a | sed -e 's|remotes/origin/||g' | sk | sed -e 's/\\*//g'
   branch-d-i   = !git branch -D $(git branch-i)
   branch-d-a-i = !git branch -D $(git branch-a-i)
-  checkout-i   = !git checkout --track $(git branch-a-i)
   copy-i       = !git git checkout $(git branch-i) -- $1
   push-i       = !git push origin $(git branch-i)
   rebase-i     = !git rebase -i $(git log --oneline | sk | awk '{ print $1 }')^
   switch-i     = !git switch $(git branch-a-i)
   tig-i        = !tig $(git branch-a-i)
-  pri          = !git checkout-i && git push origin && gh pr create
+  pri          = !git switch-i && git push origin && gh pr create
   production   = checkout production
 [core]
   excludesfile  = ~/.gitignore
@@ -90,8 +85,6 @@
 	name = euxn23
 	email = euxn23@github.com
 [pull]
-	ff = only
-[merge]
 	ff = only
 [credential]
 	helper = store

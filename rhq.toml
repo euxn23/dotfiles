@@ -1,5 +1,0 @@
-root = "~"
-
-includes = [
-  "~/github.com/japan-d2/**"
-]

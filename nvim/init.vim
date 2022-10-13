@@ -8,10 +8,6 @@ let s:dein_repo_dir = expand('~/.config/dein.vim')
 let g:loaded_python_provider = 0
 let g:loaded_ruby_provider = 0
 
-"if !has("python3")
-"  let g:python3_host_prog = expand('~/.asdf/shims/python3')
-"endif
-
 if !isdirectory(s:dein_repo_dir)
   execute '!git clone https://github.com/Shougo/dein.vim.git' s:dein_repo_dir
 endif
@@ -38,11 +34,12 @@ nnoremap <Leader>h :<C-u>LspHover<CR>
 nnoremap <Leader>r :<C-u>LspRename<CR>
 nnoremap <Leader>d :<C-u>LspDocumentDiagnostics<CR>
 nnoremap <Leader>n :<C-u>LspNextDiagnostic<CR>
-nnoremap <Leader>p :<C-u>LspPreviousDiagnostic<CR>
 
 filetype plugin indent on
 
 set visualbell
+set ttimeout
+set ttimeoutlen=50
 
 " highlight
 syntax enable
@@ -91,27 +88,8 @@ set whichwrap=b,s,h,l,<,>,[,],~
 set number
 set mouse=a
 
-if has("nvim")
-  if system('uname -a | grep microsoft') != ''
-    let g:clipboard = {
-    \  'name': 'myClipboard',
-    \  'copy': {
-    \     '+': '/mnt/c/wsl/bin/win32yank.exe -i',
-    \     '*': '/mnt/c/wsl/bin/win32yank.exe -i',
-    \   },
-    \  'paste': {
-    \     '+': '/mnt/c/wsl/bin/win32yank.exe -o',
-    \     '*': '/mnt/c/wsl/bin/win32yank.exe -o',
-    \  },
-    \  'cache_enabled': 1,
-    \}
-  endif
-  set clipboard+=unnamedplus
-else
-  set ttymouse=xterm2
-  set clipboard+=unnamed
-endif
-
+nnoremap p "*p
+nnoremap P "*P
 nnoremap j gj
 nnoremap k gk
 nnoremap <down> gj

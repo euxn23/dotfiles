@@ -1,44 +1,79 @@
-.PHONY: all
-
 . := $(PWD)
 XDG_CONFIG_HOME ?= $(HOME)/.config
+SHELL=/bin/zsh
 
-all: asdf dotfiles editorconfig git ideavim neovim tmux vim zsh
-asdf:
-	git -C $(HOME)/.asdf pull 2>/dev/null || git clone https://github.com/asdf-vm/asdf $(HOME)/.asdf
+.PHONY: lang
+lang: node python rust cargo
+
+.PHONY: asdf
+asdf: ~/.asdf
+~/.asdf:
+	git clone https://github.com/asdf-vm/asdf $(HOME)/.asdf
+	source $(HOME)/.asdf/asdf.sh
+
+.PHONY: node
+node: ~/.asdf
+	asdf plugin add nodejs
+	bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'
+	asdf install nodejs latest
+	asdf global nodejs `asdf latest nodejs`
+	asdf reshim nodejs
+
+.PHONY: python
+python: ~/.asdf
+	asdf plugin add python
+	asdf install python latest
+	pip3 install pipx
+	pipx install pynvim
+
+.PHONY: rust
+rust: ~/.asdf
+	asdf plugin-add rust
+	asdf install rust latest
+	asdf global rust `asdf latest rust`
+
+.PHONY: cargo
 cargo:
-	/bin/sh bin/cargo-install.sh
-alacritty-unix:
-	mkdir -p $(XDG_CONFIG_HOME)/alacritty
-	ln -sf $(.)/alacritty.yml $(XDG_CONFIG_HOME)/alacritty/alacritty.yml
-alacritty-wsl:
-	$(eval CONFIG_DIR = /mnt/c/Users/$(shell powershell.exe '($$env:UserName)')/AppData/Roaming/alacritty)
-	mkdir -p $(CONFIG_DIR)
-	/bin/cp -f $(.)/alacritty.yml $(CONFIG_DIR)/alacritty.yml
-dotfiles:
+	cargo install starship
+	cargo install skim
+	cargo install exa
+	cargo install ripgrep
+	asdf reshim rust
+
+.PHONY: dotfiles
+dotfiles: ~/.dotfiles
+~/.dotfiles:
 	[ -e $(HOME)/.dotfiles ] || ln -sf $(.) $(HOME)/.dotfiles
+
+wezterm:
+	mkdir -p $(XDG_CONFIG_HOME)/wezterm
+	ln -sf $(.)/wezterm.lua $(XDG_CONFIG_HOME)/wezterm/wezterm.lua
+
 editorconfig:
 	ln -sf $(.)/.editorconfig $(HOME)
+
 git:
 	ln -sf $(.)/.gitconfig $(.)/.gitignore $(.)/.tigrc $(HOME)
+
 ideavim:
-	ln -sf $(.)/.vimrc $(HOME)/.ideavimrc
+	ln -sf $(.)/ideavimrc $(HOME)/.ideavimrc
+
 neovim:
-	mkdir -p $(XDG_CONFIG_HOME)/nvim
-	ln -sf $(.)/.vimrc $(XDG_CONFIG_HOME)/nvim/init.vim
-	ln -sf $(.)/dein.toml $(.)/dein_lazy.toml $(XDG_CONFIG_HOME)/nvim/
-rhq:
-	mkdir -p $(XDG_CONFIG_HOME)/rhq
-	ln -sf $(.)/rhq.toml $(XDG_CONFIG_HOME)/rhq/config.toml
-shell:
-	ln -sf $(.)/.profile $(.)/.bashrc $(.)/.bashrc.extra $(.)/.bashrc.alias $(.)/.bashrc.post $(HOME)
+	ln -sf $(.)/nvim $(XDG_CONFIG_HOME)
+
+packer:
+	git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+
+
 tmux:
 	git -C $(HOME)/.tmux/plugins/tpm pull 2>/dev/null || git clone https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm
 	ln -sf $(.)/.tmux.conf $(HOME)
-vim:
-	mkdir -p $(XDG_CONFIG_HOME)/vim
-	ln -sf $(.)/.vimrc $(.)/dein.toml $(.)/dein_lazy.toml $(XDG_CONFIG_HOME)/vim
-zsh: shell
+
+bash:
+	ln -sf $(.)/.profile $(.)/.bashrc $(.)/.bashrc.extra $(.)/.bashrc.alias $(.)/.bashrc.post $(HOME)
+
+zsh: bash
 	/bin/sh bin/zsh-precheck.sh 1>/dev/null
 	git -C $(HOME)/.zprezto pull 2>/dev/null || git clone --recursive https://github.com/sorin-ionescu/prezto.git $(HOME)/.zprezto
 	ln -sf $(.)/.profile $(HOME)/.zprofile
