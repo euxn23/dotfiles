@@ -1,0 +1,19 @@
+modmap:
+  - name: base
+    remap:
+      KEY_BACKSLASH: KEY_BACKSPACE
+      KEY_BACKSPACE: KEY_BACKSLASH
+      KEY_CAPSLOCK: CTRL_L
+      KEY_GRAVE: KEY_ESC
+      KEY_ESC: KEY_GRAVE
+      SHIFT_L: KEY_MUHENKAN
+      SHIFT_R: KEY_HENKAN
+      SPACE:
+        alone: SPACE
+        held: SHIFT_L
+keymap:
+  - name: base
+    remap:
+      KEY_SEMICOLON: SHIFT-KEY_SEMICOLON
+      SHIFT-KEY_SEMICOLON: KEY_SEMICOLON
+        

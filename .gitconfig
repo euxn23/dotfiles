@@ -81,11 +81,7 @@
 	lineNumber = true
 [push]
 	default = current
-[user]
-	name = euxn23
-	email = euxn23@github.com
-[pull]
-	ff = only
-[credential]
-	helper = store
-
+[credential "https://github.com"]
+  helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+  helper = !/usr/bin/gh auth git-credential

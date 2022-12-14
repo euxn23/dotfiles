@@ -2,6 +2,10 @@
 XDG_CONFIG_HOME ?= $(HOME)/.config
 SHELL=/bin/zsh
 
+.PHONY: arch
+arch:
+	sudo pacman -S cmake
+
 .PHONY: lang
 lang: node python rust cargo
 
@@ -9,15 +13,12 @@ lang: node python rust cargo
 asdf: ~/.asdf
 ~/.asdf:
 	git clone https://github.com/asdf-vm/asdf $(HOME)/.asdf
-	source $(HOME)/.asdf/asdf.sh
 
 .PHONY: node
 node: ~/.asdf
 	asdf plugin add nodejs
-	bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'
 	asdf install nodejs latest
 	asdf global nodejs `asdf latest nodejs`
-	asdf reshim nodejs
 
 .PHONY: python
 python: ~/.asdf
@@ -38,7 +39,6 @@ cargo:
 	cargo install skim
 	cargo install exa
 	cargo install ripgrep
-	asdf reshim rust
 
 .PHONY: dotfiles
 dotfiles: ~/.dotfiles
@@ -63,9 +63,6 @@ neovim:
 
 packer:
 	git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
-
-
 tmux:
 	git -C $(HOME)/.tmux/plugins/tpm pull 2>/dev/null || git clone https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm
 	ln -sf $(.)/.tmux.conf $(HOME)
