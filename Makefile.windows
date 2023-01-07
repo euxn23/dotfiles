@@ -1,0 +1,18 @@
+. = $(CURDIR)
+XDG_CONFIG_HOME ?= ~/.config
+SHELL := pwsh.exe
+.SHELLFLAGS := -NoProfile -Command
+
+
+.PHONY: dotfiles
+dotfiles:
+	if (-not (Test-Path -Path ~/.dotfiles)) { New-Item -Value $(.) -Path ~ -Name .dotfiles -ItemType SymbolicLink }
+
+.PHONY: nvim
+nvim:
+	if (-not (Test-Path -Path $(XDG_CONFIG_HOME)/nvim)) { New-Item -Value $(.)/nvim -Path $(XDG_CONFIG_HOME) -Name nvim -ItemType SymbolicLink }
+
+.PHONY: wezterm
+wezterm:
+	if (-not (Test-Path -Path $(XDG_CONFIG_HOME)/wezterm)) { New-Item $(XDG_CONFIG_HOME)/wezterm -ItemType Directory; New-Item -Value $(.)/wezterm.lua -Path $(XDG_CONFIG_HOME)/wezterm -Name wezterm.lua -ItemType SymbolicLink }
+

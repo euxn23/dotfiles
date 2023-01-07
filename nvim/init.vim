@@ -88,14 +88,16 @@ set whichwrap=b,s,h,l,<,>,[,],~
 set number
 set mouse=a
 
-nnoremap p "*p
-nnoremap P "*P
 nnoremap j gj
 nnoremap k gk
 nnoremap <down> gj
 nnoremap <up> gk
 
 set viminfo=
+set clipboard+=unnamedplus
+
+" normal d -> delete
+nnoremap d "_d
 
 set backspace=indent,eol,start
 " unlimited undo

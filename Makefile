@@ -45,6 +45,7 @@ dotfiles: ~/.dotfiles
 ~/.dotfiles:
 	[ -e $(HOME)/.dotfiles ] || ln -sf $(.) $(HOME)/.dotfiles
 
+.PHONY: wezterm
 wezterm:
 	mkdir -p $(XDG_CONFIG_HOME)/wezterm
 	ln -sf $(.)/wezterm.lua $(XDG_CONFIG_HOME)/wezterm/wezterm.lua
@@ -78,3 +79,7 @@ zsh: bash
 	ln -sf $(.)/.zprezto/zlogout $(HOME)/.zlogout
 	ln -sf $(.)/.zshrc $(.)/.zpreztorc $(HOME)
 	ln -sf $(.)/starship.toml $(XDG_CONFIG_HOME)/starship.toml
+
+.PHONY: windows
+windows:
+	make -f Makefile.windows

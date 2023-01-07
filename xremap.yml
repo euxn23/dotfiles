@@ -11,6 +11,9 @@ modmap:
       SPACE:
         alone: SPACE
         held: SHIFT_L
+      KEY_TAB:
+        alone: KEY_TAB
+        held: ALT_L
 keymap:
   - name: base
     remap:
