@@ -1,5 +1,5 @@
 [include]
-  path = ~/.gitconfig.env
+  path = ./config.env
 [alias]
   a       = add .
   adp     = add -p
@@ -66,11 +66,6 @@
   tig-i        = !tig $(git branch-a-i)
   pri          = !git switch-i && git push origin && gh pr create
   production   = checkout production
-[core]
-  excludesfile  = ~/.gitignore
-	fileMode = true
-[ghq]
-  root = ~
 [color]
 	ui = true
 [diff]
@@ -85,3 +80,4 @@
   helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
   helper = !/usr/bin/gh auth git-credential
+

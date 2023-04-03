@@ -5,15 +5,16 @@ if string.find(wezterm.target_triple, 'windows') then
   -- default_prog = { 'pwsh.exe' }
 end
 
+local keys = {
+  { key = 'v', mods = 'SHIFT|CTRL', action = wezterm.action.Paste }
+}
+
 return {
   -- appearance
-
   color_scheme = 'JetBrains Darcula',
-  window_background_opacity = 0.85,
+  window_background_opacity = 0.75,
 
-  -- font = wezterm.font('UDEV Gothic 35NF'),
-  -- font = wezterm.font('UDEV Gothic NF'),
-  font = wezterm.font('UDEV Gothic 35JPDOC'),
+  font = wezterm.font('UDEV Gothic 35NF'),
 
   hide_tab_bar_if_only_one_tab = true,
   check_for_updates = true,
@@ -26,4 +27,5 @@ return {
   },
 
   default_prog = default_prog,
+  keys = keys,
 }

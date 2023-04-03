@@ -2,10 +2,6 @@
 XDG_CONFIG_HOME ?= $(HOME)/.config
 SHELL=/bin/zsh
 
-.PHONY: arch
-arch:
-	sudo pacman -S cmake
-
 .PHONY: lang
 lang: node python rust cargo
 
@@ -53,17 +49,18 @@ wezterm:
 editorconfig:
 	ln -sf $(.)/.editorconfig $(HOME)
 
+.PHONY: git
 git:
-	ln -sf $(.)/.gitconfig $(.)/.gitignore $(.)/.tigrc $(HOME)
+	ln -sf $(.)/git $(XDG_CONFIG_HOME)
 
+.PHONY: ideavim
 ideavim:
-	ln -sf $(.)/ideavimrc $(HOME)/.ideavimrc
+	ln -sf $(.)/.ideavimrc $(HOME)/.ideavimrc
 
+.PHONY: neovim
 neovim:
 	ln -sf $(.)/nvim $(XDG_CONFIG_HOME)
 
-packer:
-	git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 tmux:
 	git -C $(HOME)/.tmux/plugins/tpm pull 2>/dev/null || git clone https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm
 	ln -sf $(.)/.tmux.conf $(HOME)
@@ -72,7 +69,6 @@ bash:
 	ln -sf $(.)/.profile $(.)/.bashrc $(.)/.bashrc.extra $(.)/.bashrc.alias $(.)/.bashrc.post $(HOME)
 
 zsh: bash
-	/bin/sh bin/zsh-precheck.sh 1>/dev/null
 	git -C $(HOME)/.zprezto pull 2>/dev/null || git clone --recursive https://github.com/sorin-ionescu/prezto.git $(HOME)/.zprezto
 	ln -sf $(.)/.profile $(HOME)/.zprofile
 	ln -sf $(.)/.zprezto/zlogin $(HOME)/.zlogin

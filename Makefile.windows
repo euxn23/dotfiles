@@ -7,12 +7,22 @@ SHELL := pwsh.exe
 .PHONY: dotfiles
 dotfiles:
 	if (-not (Test-Path -Path ~/.dotfiles)) { New-Item -Value $(.) -Path ~ -Name .dotfiles -ItemType SymbolicLink }
+.PHONY: editorconfig
+editorconfig:
+	if (-not (Test-Path -Path ~/.editorconfig)) { New-Item -Value $(.)/.editorconfig -Path ~ -Name .editorconfig -ItemType SymbolicLink }
 
 .PHONY: nvim
 nvim:
 	if (-not (Test-Path -Path $(XDG_CONFIG_HOME)/nvim)) { New-Item -Value $(.)/nvim -Path $(XDG_CONFIG_HOME) -Name nvim -ItemType SymbolicLink }
 
+.PHONY: ideavim
+ideavim:
+	if (-not (Test-Path -Path ~/.ideavimrc)) { New-Item -Value $(.)/.ideavimrc -Path ~ -Name .ideavimrc -ItemType SymbolicLink }
+
 .PHONY: wezterm
 wezterm:
 	if (-not (Test-Path -Path $(XDG_CONFIG_HOME)/wezterm)) { New-Item $(XDG_CONFIG_HOME)/wezterm -ItemType Directory; New-Item -Value $(.)/wezterm.lua -Path $(XDG_CONFIG_HOME)/wezterm -Name wezterm.lua -ItemType SymbolicLink }
 
+.PHONY: powershell
+powershell:
+	if (-not (Test-Path -Path ~/Documents/Powershell)) { New-Item -Value $(.)/Powershell -Path ~/Documents -Name Powershell -ItemType SymbolicLink }

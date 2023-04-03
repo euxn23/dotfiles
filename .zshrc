@@ -4,6 +4,11 @@ HISTFILE=~/.zhistory
 HISTSIZE=1000000
 SAVEHIST=1000000
 
+# Activate asdf
+if [[ -s $HOME/.asdf/asdf.sh ]]; then
+  . $HOME/.asdf/asdf.sh
+fi
+
 # Activate utilities from prezto
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"

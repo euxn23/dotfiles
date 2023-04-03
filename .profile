@@ -1,5 +1,6 @@
 export PATH=$HOME/bin:$PATH
 export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
 
 if uname | grep -i 'darwin' &>/dev/null ; then
   export PATH=$HOME/bin:/opt/homebrew/bin:$PATH
@@ -15,4 +16,3 @@ fi
 
 export SKIM_DEFAULT_OPTIONS="--color=bg+:12 --exit-0 --inline-info --multi --reverse --select-1"
 
-. $HOME/.asdf/asdf.sh
