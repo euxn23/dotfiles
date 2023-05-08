@@ -6,13 +6,13 @@ if string.find(wezterm.target_triple, 'windows') then
 end
 
 local keys = {
-  { key = 'v', mods = 'SHIFT|CTRL', action = wezterm.action.Paste }
+  { key = 'v', mods = 'SHIFT|CTRL', action = wezterm.action.PasteFrom 'Clipboard' }
 }
 
 return {
   -- appearance
   color_scheme = 'JetBrains Darcula',
-  window_background_opacity = 0.75,
+  window_background_opacity = 0.95,
 
   font = wezterm.font('UDEV Gothic 35NF'),
 

@@ -7,6 +7,7 @@ SAVEHIST=1000000
 # Activate asdf
 if [[ -s $HOME/.asdf/asdf.sh ]]; then
   . $HOME/.asdf/asdf.sh
+  export NODE_BINARY=`which node`
 fi
 
 # Activate utilities from prezto
