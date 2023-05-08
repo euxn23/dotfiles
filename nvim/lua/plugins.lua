@@ -33,5 +33,13 @@ return {
     config = function()
       require('config/nvim-tree')
     end
+  },
+  -- lsp
+  {
+    'neovim/nvim-lspconfig',
+    config = function()
+      require('config/nvim-lspconfig')
+    end
   }
 }
+
