@@ -10,16 +10,14 @@ local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
 local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
 
 if string.find(wezterm.target_triple, 'windows') then
-  -- wsl_domains = {
-  --   {
-  --     name = 'WSL:Arch',
-  --     distribution = 'Arch',
-  --     username = 'euxn',
-  --     default_cwd = '/home/euxn',
-  --   },
-  -- }
-  -- default_domain = 'WSL:Arch'
-  default_prog = { 'wsl.exe', '~' }
+  wsl_domains = {
+    {
+      name = 'WSL:Arch',
+      distribution = 'Arch',
+      default_cwd = '~',
+    },
+  }
+  default_domain = 'WSL:Arch'
 end
 
 local leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 1000 }
@@ -160,7 +158,6 @@ return {
 
   default_domain = default_domain,
   wsl_domains = wsl_domains,
-  default_prog = default_prog,
   leader = leader,
   keys = keys
 }
