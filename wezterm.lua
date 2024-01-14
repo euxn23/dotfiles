@@ -152,6 +152,9 @@ return {
     bottom = 0,
   },
 
+  enable_scroll_bar = true,
+  scrollback_lines = 50000,
+
   use_fancy_tab_bar = false,
   tab_bar_style = tab_bar_style,
   tab_max_width = 24,

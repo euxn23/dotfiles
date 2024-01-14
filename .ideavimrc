@@ -1,4 +1,4 @@
-clipboard+=unnamed
+set clipboard+=unnamed
 set visualbell
 set noerrorbells
 

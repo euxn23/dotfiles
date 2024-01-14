@@ -10,6 +10,12 @@ if [[ -s $HOME/.asdf/asdf.sh ]]; then
   export NODE_BINARY=`which node`
 fi
 
+# Activate rtx
+if type rtx &>/dev/null; then
+  eval "$(rtx activate zsh)"
+  export PATH="$HOME/.local/share/rtx/shims:$PATH"
+fi
+
 # Activate utilities from prezto
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
