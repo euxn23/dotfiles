@@ -2,39 +2,13 @@
 XDG_CONFIG_HOME ?= $(HOME)/.config
 SHELL=/bin/zsh
 
-.PHONY: lang
-lang: node python rust cargo
-
-.PHONY: asdf
-asdf: ~/.asdf
-~/.asdf:
-	git clone https://github.com/asdf-vm/asdf $(HOME)/.asdf
-
-.PHONY: node
-node: ~/.asdf
-	asdf plugin add nodejs
-	asdf install nodejs latest
-	asdf global nodejs `asdf latest nodejs`
-
-.PHONY: python
-python: ~/.asdf
-	asdf plugin add python
-	asdf install python latest
-	pip3 install pipx
-	pipx install pynvim
-
-.PHONY: rust
-rust: ~/.asdf
-	asdf plugin-add rust
-	asdf install rust latest
-	asdf global rust `asdf latest rust`
+.PHONY: default
+default: cargo dotfiles editorconfig git ideavim neovim wezterm zsh
 
 .PHONY: cargo
 cargo:
-	cargo install starship
-	cargo install skim
-	cargo install exa
-	cargo install ripgrep
+	mise use -g cargo:starship
+	mise use -g cargo:skim
 
 .PHONY: dotfiles
 dotfiles: ~/.dotfiles
@@ -46,6 +20,7 @@ wezterm:
 	mkdir -p $(XDG_CONFIG_HOME)/wezterm
 	ln -sf $(.)/wezterm.lua $(XDG_CONFIG_HOME)/wezterm/wezterm.lua
 
+.PHONY: editorconfig
 editorconfig:
 	ln -sf $(.)/.editorconfig $(HOME)
 
@@ -57,23 +32,29 @@ git:
 ideavim:
 	ln -sf $(.)/.ideavimrc $(HOME)/.ideavimrc
 
+.PHONY: mise
+mise:
+	ln -sf $(.)/mise $(XDG_CONFIG_HOME)
+
 .PHONY: neovim
 neovim:
 	ln -sf $(.)/nvim $(XDG_CONFIG_HOME)
 
-tmux:
-	git -C $(HOME)/.tmux/plugins/tpm pull 2>/dev/null || git clone https://github.com/tmux-plugins/tpm $(HOME)/.tmux/plugins/tpm
-	ln -sf $(.)/.tmux.conf $(HOME)
-
+.PHONY: bash
 bash:
-	ln -sf $(.)/.profile $(.)/.bashrc $(.)/.bashrc.extra $(.)/.bashrc.alias $(.)/.bashrc.post $(HOME)
+	ln -sf $(.)/.profile $(.)/.bashrc $(HOME)
 
-zsh: bash
-	git -C $(HOME)/.zprezto pull 2>/dev/null || git clone --recursive https://github.com/sorin-ionescu/prezto.git $(HOME)/.zprezto
+.PHONY: zsh
+zsh:
+	git -C $(HOME)/.zsh/zsh-autosuggestions pull 2>/dev/null || git clone https://github.com/zsh-users/zsh-autosuggestions.git $(HOME)/.zsh/zsh-autosuggestions
+	git -C $(HOME)/.zsh/zsh-completions pull 2>/dev/null || git clone https://github.com/zsh-users/zsh-completions.git $(HOME)/.zsh/zsh-completions
+	git -C $(HOME)/.zsh/zsh-syntax-highlighting pull 2>/dev/null || git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $(HOME)/.zsh/zsh-syntax-highlighting
+	git -C $(HOME)/.zsh/zsh-history-substring-search pull 2>/dev/null || git clone https://github.com/zsh-users/zsh-history-substring-search.git $(HOME)/.zsh/zsh-history-substring-search
+	git -C $(HOME)/.zsh/skim pull 2>/dev/null || git clone https://github.com/lotabout/skim.git $(HOME)/.zsh/skim
 	ln -sf $(.)/.profile $(HOME)/.zprofile
 	ln -sf $(.)/.zprezto/zlogin $(HOME)/.zlogin
 	ln -sf $(.)/.zprezto/zlogout $(HOME)/.zlogout
-	ln -sf $(.)/.zshrc $(.)/.zpreztorc $(HOME)
+	ln -sf $(.)/.zshrc $(.)/.zshrc.extra $(.)/.zshrc.alias $(.)/.zshrc.env $(.)/.zpreztorc $(HOME)
 	ln -sf $(.)/starship.toml $(XDG_CONFIG_HOME)/starship.toml
 
 .PHONY: windows

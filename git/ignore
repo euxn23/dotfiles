@@ -1,6 +1,5 @@
 .env
-.tool-versions
-.rtx.toml
+.mise.toml
 
 cert.pem
 privkey.pem

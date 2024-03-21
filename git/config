@@ -1,5 +1,5 @@
 [include]
-  path = ./config.env
+  path = ./env/config
 [alias]
   a       = add .
   adp     = add -p
@@ -32,7 +32,7 @@
   prod    = checkout production
   pi      = !git push-i
   i       = !git branch-i
-  pull-f  = !git fetch && git reset --hard origin/$(git current-branch)
+  reset-h = reset --hard origin/$(git current-branch)
   r       = !git fp && git rebase
   ra      = rebase --abort
   rc      = rebase --continue
@@ -82,3 +82,5 @@
   helper = !gh auth git-credential
 [init]
 	defaultBranch = main
+[core]
+	autocrlf = input

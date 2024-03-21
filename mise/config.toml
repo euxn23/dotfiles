@@ -1,0 +1,11 @@
+[tools]
+node = "21"
+"cargo:starship" = "latest"
+"cargo:skim" = "latest"
+"npm:corepack" = "latest"
+"npm:wrangler" = "latest"
+"npm:tsx" = "latest"
+
+[settings]
+experimental = true
+

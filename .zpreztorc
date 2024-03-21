@@ -1,8 +1,0 @@
-zstyle ':prezto:*:*' color 'yes'
-zstyle ':prezto:load' pmodule \
-  'autosuggestions' \
-  'completion' \
-  'directory' \
-  'environment' \
-  'history-substring-search' \
-  'utility'

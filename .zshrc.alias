@@ -1,10 +1,8 @@
+#!/bin/zsh
+
 # override system command
 alias la='ls -la'
-alias grep=rg
 alias vim=nvim
-
-# Application option
-alias tmux='tmux -u'
 
 # restart shell
 alias shl='exec $SHELL -l'
